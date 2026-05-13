@@ -75,10 +75,6 @@
   color: var(--accent);
 }
 
-.fn-layout__body {
-  padding: 0 1rem;
-}
-
 @media (prefers-color-scheme: dark) {
   .fn-layout__tabs {
     background: color-mix(in srgb, var(--bg) 88%, transparent);
