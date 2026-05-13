@@ -74,6 +74,16 @@
   font-family: var(--mono);
 }
 
+@media (max-width: 640px) {
+  .code-sample__pre {
+    overflow-x: hidden;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   .code-sample__copy {
     color: color-mix(in srgb, var(--accent) 45%, #312e81);

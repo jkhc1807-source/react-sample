@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom'
+import ScrollableTabList from '../../components/ScrollableTabList.jsx'
 import './FunctionsLayout.css'
 
 const TABS = [
@@ -28,7 +29,7 @@ export default function FunctionsLayout() {
         </p>
       </header>
       <nav className="fn-layout__tabs" aria-label="함수별 탭">
-        <div className="fn-layout__tabs-scroll">
+        <ScrollableTabList trackClassName="fn-layout__tabs-scroll">
           {TABS.map(({ path, label }) => (
             <NavLink
               key={path}
@@ -40,7 +41,7 @@ export default function FunctionsLayout() {
               {label}
             </NavLink>
           ))}
-        </div>
+        </ScrollableTabList>
       </nav>
       <div className="fn-layout__body">
         <Outlet />

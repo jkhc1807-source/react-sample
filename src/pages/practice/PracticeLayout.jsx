@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom'
+import ScrollableTabList from '../../components/ScrollableTabList.jsx'
 import './PracticeLayout.css'
 
 const TABS = [
@@ -21,7 +22,7 @@ export default function PracticeLayout() {
         </p>
       </header>
       <nav className="pr-layout__tabs" aria-label="실무·심화 탭">
-        <div className="pr-layout__tabs-scroll">
+        <ScrollableTabList trackClassName="pr-layout__tabs-scroll">
           {TABS.map(({ path, label }) => (
             <NavLink
               key={path}
@@ -33,7 +34,7 @@ export default function PracticeLayout() {
               {label}
             </NavLink>
           ))}
-        </div>
+        </ScrollableTabList>
       </nav>
       <div className="pr-layout__body">
         <Outlet />
