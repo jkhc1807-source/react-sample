@@ -5,7 +5,7 @@
 
 .site-nav__rail {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   padding: 0.2rem;
   border-radius: var(--ui-radius-pill);
   background: var(--surface-muted);
@@ -20,7 +20,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   gap: 0.2rem;
 }
 
@@ -66,6 +66,7 @@
 
 @media (max-width: 640px) {
   .site-nav__rail {
+    justify-content: flex-start;
     border-radius: var(--ui-radius-lg);
     overflow-x: auto;
     overflow-y: hidden;
