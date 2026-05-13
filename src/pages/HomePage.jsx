@@ -10,14 +10,12 @@ export default function HomePage() {
         <h1 className="home__title">React 학습 허브</h1>
         <p className="home__lead">
           한 곳에서 주제별 예제를 돌아다니며 보는 <strong>개인 학습용 허브</strong>입니다.
-          검색창으로 바로 이동하거나 아래 순서만 따라와도 됩니다. (
-          <code>App.jsx</code> 예제는 <strong>샘플 모음</strong>에 모아 두었습니다.)
+          검색창으로 바로 이동하거나 아래 순서만 따라와도 됩니다.
         </p>
       </header>
 
       <section className="home__section" aria-labelledby="home-track-title">
         <div className="home__section-head">
-          <span className="home__section-badge">순서</span>
           <h2 id="home-track-title" className="home__section-title">
             권장 학습 순서
           </h2>
@@ -43,7 +41,6 @@ export default function HomePage() {
       <section className="home__section" aria-labelledby="home-search-title">
         <div className="home__section-head home__section-head--split">
           <div>
-            <span className="home__section-badge">탐색</span>
             <h2 id="home-search-title" className="home__section-title">
               페이지 검색
             </h2>

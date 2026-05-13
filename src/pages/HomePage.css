@@ -108,20 +108,6 @@
   margin-bottom: var(--space-5);
 }
 
-.home__section-badge {
-  display: inline-block;
-  margin-bottom: var(--space-2);
-  padding: 0.2rem 0.55rem;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  border-radius: var(--ui-radius-sm);
-  border: 1px solid color-mix(in srgb, var(--accent-border) 55%, var(--border));
-  background: color-mix(in srgb, var(--accent-bg) 40%, var(--surface));
-}
-
 .home__section-title {
   margin: 0 0 var(--space-2);
   font-size: clamp(1.05rem, 2.8vw, 1.2rem);
