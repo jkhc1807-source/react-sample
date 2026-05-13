@@ -19,6 +19,27 @@
   color: var(--text-muted, var(--text));
 }
 
+.site-auth__admin {
+  font-size: clamp(0.8rem, 2.2vw, 0.88rem);
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--ui-radius-pill);
+  border: 1px solid color-mix(in srgb, var(--accent-border) 35%, transparent);
+  background: color-mix(in srgb, var(--accent-bg) 30%, transparent);
+}
+
+.site-auth__admin:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+.site-auth__admin:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--ui-focus-ring);
+}
+
 .site-auth__login {
   font-size: clamp(0.82rem, 2.3vw, 0.9rem);
   font-weight: 600;

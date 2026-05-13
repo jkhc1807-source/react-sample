@@ -5,6 +5,7 @@ import './index.css'
 import { AuthProvider } from './contexts/AuthProvider.jsx'
 import AppLayout from './layouts/AppLayout.jsx'
 import AuthPage from './pages/AuthPage.jsx'
+import AdminPage from './pages/AdminPage.jsx'
 import HomePage from './pages/HomePage.jsx'
 import PlaygroundPage from './pages/PlaygroundPage.jsx'
 import MapStudyPage from './pages/MapStudyPage.jsx'
@@ -41,6 +42,7 @@ createRoot(document.getElementById('root')).render(
           <Route element={<AppLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/auth" element={<AuthPage />} />
+            <Route path="/admin" element={<AdminPage />} />
           <Route path="/playground" element={<PlaygroundPage />} />
           <Route path="/map-study" element={<Navigate to="/functions/map" replace />} />
           <Route path="/state-study" element={<Navigate to="/functions/state" replace />} />

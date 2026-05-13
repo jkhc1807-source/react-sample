@@ -4,6 +4,7 @@ import './SiteAuthBar.css'
 
 export default function SiteAuthBar() {
   const { user, status, logout } = useAuth()
+  const isAdmin = user?.role === 'admin'
 
   if (status === 'loading') {
     return (
@@ -19,6 +20,11 @@ export default function SiteAuthBar() {
         <span className="site-auth__email" title={user.email}>
           {user.email}
         </span>
+        {isAdmin && (
+          <Link to="/admin" className="site-auth__admin">
+            어드민
+          </Link>
+        )}
         <button type="button" className="site-auth__logout" onClick={() => logout()}>
           로그아웃
         </button>

@@ -10,6 +10,12 @@ export const HOME_SEARCH_ROUTES = [
     keywords: ['로그인', '회원가입', 'login', 'auth', '계정'],
   },
   {
+    path: '/admin',
+    title: '어드민 — 회원 목록',
+    subtitle: '가입 사용자 조회 (dev only)',
+    keywords: ['admin', '어드민', '관리자', '회원 목록'],
+  },
+  {
     path: '/playground',
     title: '샘플 모음',
     subtitle: '버튼, 표현식, 카운터, 할 일 등 기초 예제',

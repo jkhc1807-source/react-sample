@@ -1,0 +1,111 @@
+.admin-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-2) 0 var(--space-10);
+}
+
+.admin-page__head {
+  margin-bottom: var(--space-6);
+}
+
+.admin-page__eyebrow {
+  margin: 0 0 var(--space-2);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.admin-page__title {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(1.35rem, 4vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-h);
+}
+
+.admin-page__lead {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted, var(--text));
+}
+
+.admin-page__card {
+  border-radius: var(--ui-radius-xl);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+}
+
+.admin-page__card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.admin-page__count {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted, var(--text));
+}
+
+.admin-page__status {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-muted, var(--text));
+}
+
+.admin-page__error {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-3);
+  border-radius: var(--ui-radius);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--ui-danger);
+  background: var(--ui-danger-soft);
+  border: 1px solid color-mix(in srgb, var(--ui-danger) 25%, var(--border));
+}
+
+.admin-page__table-wrap {
+  max-height: min(50vh, 24rem);
+  overflow: auto;
+}
+
+.admin-page__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.admin-page__table th,
+.admin-page__table td {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+  text-align: left;
+}
+
+.admin-page__table th {
+  font-weight: 600;
+  color: var(--text-muted, var(--text));
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.admin-page__cell-id {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-muted, var(--text));
+}
+
+.admin-page__empty {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted, var(--text));
+}
+
