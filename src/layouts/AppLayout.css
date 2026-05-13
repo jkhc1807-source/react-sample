@@ -135,8 +135,46 @@
 }
 
 @media (max-width: 640px) {
+  /* 1행: 브랜드 | 인증 — 2행: 네비 전체 너비 (header-tools display:contents 로 자식을 그리드에 배치) */
   .app-shell__header-inner {
-    flex-direction: column;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    column-gap: 0.75rem;
+    row-gap: 0.5rem;
+  }
+
+  .app-shell__brand {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .app-shell__brand::before {
+    display: none;
+  }
+
+  .app-shell__header-tools {
+    display: contents;
+  }
+
+  .site-auth {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    min-width: 0;
+  }
+
+  .site-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .app-shell__header-tools .site-nav {
+    flex: none;
+    min-width: 0;
   }
 }

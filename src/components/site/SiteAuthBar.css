@@ -88,3 +88,15 @@
   outline: none;
   box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--ui-focus-ring);
 }
+
+@media (max-width: 640px) {
+  .site-auth__email {
+    max-width: min(10rem, 42vw);
+  }
+
+  .site-auth__admin,
+  .site-auth__login,
+  .site-auth__logout {
+    border-radius: var(--ui-radius-sm);
+  }
+}
