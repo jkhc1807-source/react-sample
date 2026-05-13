@@ -66,36 +66,41 @@
 
 @media (max-width: 640px) {
   .site-nav__rail {
-    justify-content: center;
-    justify-content: safe center;
     border-radius: var(--ui-radius-lg);
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    scrollbar-gutter: stable;
+    overflow: visible;
     padding-inline: clamp(0.35rem, 3vw, 0.85rem);
+    padding-block: 0.25rem;
   }
 
   .site-nav__list {
-    flex-wrap: nowrap;
-    justify-content: center;
-    justify-content: safe center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.35rem;
     padding: 0.15rem 0.1rem;
-    min-height: 2.5rem;
-    margin-inline: auto;
+    margin-inline: 0;
+  }
+
+  /* 항목이 홀수 개일 때 마지막 칸만 한 줄 전체 사용 */
+  .site-nav__item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 
   .site-nav__item {
-    flex: 0 0 auto;
+    min-width: 0;
   }
 
   .site-nav__link {
-    width: auto;
-    padding: 0.45rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 2.35rem;
+    padding: 0.4rem 0.45rem;
     border-radius: var(--ui-radius);
+    white-space: normal;
+    text-align: center;
+    line-height: 1.25;
   }
 }
 
