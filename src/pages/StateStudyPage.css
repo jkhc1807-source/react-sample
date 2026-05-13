@@ -203,8 +203,8 @@
   }
 
   .state-study__code {
-    background: #f4f4f5;
-    border-color: #e4e4e7;
+    background: var(--code-bg);
+    border-color: var(--border);
   }
 
   .state-study__mono {
@@ -221,8 +221,8 @@
   }
 
   .state-study__form-block {
-    border-color: #e4e4e7;
-    background: #fafafa;
+    border-color: var(--border);
+    background: var(--surface-soft);
   }
 
   .state-study__field input {

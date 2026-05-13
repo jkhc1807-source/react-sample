@@ -9,24 +9,24 @@
   --space-10: 2.5rem;
   --space-12: 3rem;
 
-  --text: #404040;
+  --text: #475569;
   --text-muted: color-mix(in srgb, var(--text) 72%, var(--text-h));
-  --text-h: #000000;
-  --bg: #fafafa;
-  --border: rgba(0, 0, 0, 0.12);
-  --code-bg: #f0f0f0;
+  --text-h: #0f172a;
+  --bg: #f0f4f8;
+  --border: rgba(15, 23, 42, 0.1);
+  --code-bg: #e6f0ed;
   --surface: #ffffff;
-  --surface-soft: #f5f5f5;
-  --surface-muted: #ebebeb;
-  --accent: #0a0a0a;
-  --accent-bg: rgba(0, 0, 0, 0.06);
-  --accent-border: rgba(0, 0, 0, 0.2);
-  --social-bg: #f7f7f7;
-  --shadow-sm: 0 1px 2px rgba(12, 10, 16, 0.05);
+  --surface-soft: #e8eef5;
+  --surface-muted: #dbe4ef;
+  --accent: #0d9488;
+  --accent-bg: color-mix(in srgb, var(--accent) 14%, var(--bg));
+  --accent-border: color-mix(in srgb, var(--accent) 42%, var(--border));
+  --social-bg: #e9f1f4;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
   --shadow-md:
-    0 4px 6px -1px rgba(12, 10, 16, 0.06), 0 2px 4px -2px rgba(12, 10, 16, 0.04);
+    0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
   --shadow:
-    0 12px 40px -12px rgba(12, 10, 16, 0.12), 0 8px 16px -8px rgba(12, 10, 16, 0.08);
+    0 12px 40px -12px rgba(15, 23, 42, 0.12), 0 8px 16px -8px rgba(15, 23, 42, 0.07);
 
   /* 페이지 머리·섹션: 제목 ↔ 본문 간격 (학습/허브 공통) */
   --page-hero-title-gap: 1rem;
@@ -48,7 +48,7 @@
   --ui-radius-xl: 18px;
   --ui-radius-pill: 999px;
   --ui-on-accent: #ffffff;
-  --ui-focus-ring: rgba(0, 0, 0, 0.35);
+  --ui-focus-ring: color-mix(in srgb, var(--accent) 48%, transparent);
   --ui-danger: #e11d48;
   --ui-danger-soft: color-mix(in srgb, #e11d48 18%, var(--bg));
   --ui-control-bg: var(--surface);
@@ -90,32 +90,32 @@ html {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #a8a8a8;
+    --text: #94a3b8;
     --text-muted: color-mix(in srgb, var(--text) 82%, var(--text-h));
-    --text-h: #fafafa;
-    --bg: #0a0a0a;
-    --border: rgba(255, 255, 255, 0.14);
-    --code-bg: #141414;
-    --surface: #171717;
-    --surface-soft: #1a1a1a;
-    --surface-muted: #262626;
-    --accent: #f5f5f5;
-    --accent-bg: rgba(255, 255, 255, 0.08);
-    --accent-border: rgba(255, 255, 255, 0.22);
-    --social-bg: #141414;
-    --ui-on-accent: #0a0a0a;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
-    --shadow-md: 0 6px 16px -4px rgba(0, 0, 0, 0.45);
-    --shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.55);
+    --text-h: #f1f5f9;
+    --bg: #0b1220;
+    --border: rgba(148, 163, 184, 0.14);
+    --code-bg: #111b28;
+    --surface: #121d2e;
+    --surface-soft: #172536;
+    --surface-muted: #1e3049;
+    --accent: #2dd4bf;
+    --accent-bg: color-mix(in srgb, var(--accent) 14%, var(--bg));
+    --accent-border: color-mix(in srgb, var(--accent) 38%, var(--border));
+    --social-bg: #142032;
+    --ui-on-accent: #042f2e;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 6px 16px -4px rgba(0, 0, 0, 0.48);
+    --shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.58);
 
-    --ui-control-bg: #141414;
-    --ui-control-border: rgba(255, 255, 255, 0.14);
-    --ui-elevated: #1c1c1c;
-    --ui-panel-border: rgba(255, 255, 255, 0.12);
-    --ui-scrim: rgba(0, 0, 0, 0.56);
+    --ui-control-bg: #152433;
+    --ui-control-border: rgba(148, 163, 184, 0.18);
+    --ui-elevated: #1a2d40;
+    --ui-panel-border: rgba(148, 163, 184, 0.14);
+    --ui-scrim: rgba(0, 0, 0, 0.58);
     --ui-danger-soft: color-mix(in srgb, #fb7185 16%, var(--bg));
     --ui-code-surface: var(--code-bg);
-    --ui-focus-ring: rgba(255, 255, 255, 0.42);
+    --ui-focus-ring: color-mix(in srgb, var(--accent) 52%, transparent);
     --divider-line: color-mix(in srgb, var(--border) 38%, transparent);
   }
 
@@ -126,20 +126,20 @@ body {
   min-height: 100%;
   background-color: var(--bg);
   background-image:
-    radial-gradient(ellipse 100% 80% at 50% -40%, color-mix(in srgb, var(--text-h) 5%, transparent), transparent 52%),
-    radial-gradient(ellipse 70% 50% at 100% 0%, color-mix(in srgb, var(--text-h) 4%, transparent), transparent 46%),
-    radial-gradient(ellipse 60% 40% at 0% 100%, color-mix(in srgb, var(--text-h) 3%, transparent), transparent 50%);
+    radial-gradient(ellipse 100% 85% at 50% -42%, color-mix(in srgb, var(--accent) 11%, transparent), transparent 54%),
+    radial-gradient(ellipse 72% 52% at 100% 0%, color-mix(in srgb, var(--text-h) 5%, transparent), transparent 48%),
+    radial-gradient(ellipse 58% 42% at 0% 100%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 52%);
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--text-h) 14%, transparent);
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
   color: var(--text-h);
 }
 
 @media (prefers-color-scheme: dark) {
   ::selection {
-    background: color-mix(in srgb, var(--text-h) 38%, transparent);
-    color: var(--bg);
+    background: color-mix(in srgb, var(--accent) 32%, transparent);
+    color: var(--text-h);
   }
 }
 
@@ -152,8 +152,8 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border-inline: 1px solid var(--border);
-  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  border-inline: 1px solid color-mix(in srgb, var(--border) 88%, var(--accent));
+  background: color-mix(in srgb, var(--surface) 78%, var(--bg));
   box-shadow: var(--shadow-sm);
 }
 

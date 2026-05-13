@@ -205,13 +205,13 @@
   }
 
   .practical-react__tip {
-    border-color: #c7d2fe;
-    background: #eef2ff;
+    border-color: color-mix(in srgb, var(--accent) 38%, #cbd5e1);
+    background: color-mix(in srgb, var(--accent) 12%, var(--surface));
     color: #334155;
   }
 
   .practical-react__tip strong {
-    color: #3730a3;
+    color: color-mix(in srgb, var(--accent) 82%, var(--text-h));
   }
 
   .practical-react__path {
