@@ -1,7 +1,7 @@
 .ui-kit {
   max-width: 900px;
   margin: 0 auto;
-  padding: clamp(1.25rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem) 3.5rem;
+  padding: var(--page-gutter-t) var(--page-gutter-x) var(--page-gutter-b);
   text-align: left;
 }
 
@@ -60,9 +60,9 @@
 }
 
 .ui-kit__section {
-  margin-bottom: clamp(1.75rem, 4vw, 2.25rem);
-  padding-bottom: clamp(1.25rem, 3vw, 1.75rem);
-  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--page-section-stack);
+  padding-bottom: var(--page-section-pad-b);
+  border-bottom: 1px solid var(--divider-line);
 }
 
 .ui-kit__section:last-of-type {

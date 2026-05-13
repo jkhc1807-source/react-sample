@@ -1,7 +1,7 @@
 .auth-page {
   max-width: 26rem;
   margin: 0 auto;
-  padding: var(--space-5) clamp(var(--space-3), 4vw, var(--space-5)) var(--space-10);
+  padding: var(--space-5) var(--page-gutter-x) var(--page-gutter-b);
   box-sizing: border-box;
 }
 
@@ -76,7 +76,7 @@
 .auth-page__form {
   padding: clamp(var(--space-6), 5vw, var(--space-8));
   border-radius: var(--ui-radius-xl);
-  border: 1px solid var(--border);
+  border: 1px solid var(--divider-line);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
 }

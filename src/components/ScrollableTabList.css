@@ -19,7 +19,7 @@
   margin: 0;
   padding: 0 0.2rem;
   box-sizing: border-box;
-  border: 1px solid var(--border);
+  border: 1px solid var(--divider-line);
   border-radius: var(--ui-radius-sm);
   background: color-mix(in srgb, var(--bg) 88%, var(--surface));
   color: var(--text-h);

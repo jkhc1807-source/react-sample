@@ -1,7 +1,7 @@
 .admin-page {
   max-width: 720px;
   margin: 0 auto;
-  padding: var(--space-2) 0 var(--space-10);
+  padding: var(--space-3) var(--page-gutter-x) var(--page-gutter-b);
 }
 
 .admin-page__head {
@@ -85,7 +85,7 @@
 .admin-page__table th,
 .admin-page__table td {
   padding: 0.5rem 0.6rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+  border-bottom: 1px solid var(--divider-line);
   text-align: left;
 }
 

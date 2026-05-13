@@ -33,6 +33,14 @@
   --page-section-title-gap: 1rem;
   --page-paragraph-gap: 0.8rem;
 
+  /* 본문 페이지 여백·구분선 (전 페이지 공통) */
+  --page-gutter-x: clamp(1rem, 5vw, 1.75rem);
+  --page-gutter-t: clamp(1.35rem, 4vw, 1.85rem);
+  --page-gutter-b: clamp(3.25rem, 8vw, 4.5rem);
+  --page-section-stack: 2.35rem;
+  --page-section-pad-b: 1.65rem;
+  --divider-line: color-mix(in srgb, var(--border) 42%, transparent);
+
   /* 폼·버튼·모달 등 UI 컴포넌트 공통 토큰 (--accent와 맞춤) */
   --ui-radius: 10px;
   --ui-radius-sm: 7px;
@@ -108,6 +116,7 @@ html {
     --ui-danger-soft: color-mix(in srgb, #fb7185 16%, var(--bg));
     --ui-code-surface: var(--code-bg);
     --ui-focus-ring: rgba(255, 255, 255, 0.42);
+    --divider-line: color-mix(in srgb, var(--border) 38%, transparent);
   }
 
 }

@@ -9,7 +9,7 @@
   padding: 0.2rem;
   border-radius: var(--ui-radius-pill);
   background: var(--surface-muted);
-  border: 1px solid color-mix(in srgb, var(--border) 80%, var(--accent) 20%);
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
   box-shadow: var(--shadow-sm);
 }
 

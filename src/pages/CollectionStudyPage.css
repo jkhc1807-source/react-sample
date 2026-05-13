@@ -1,7 +1,7 @@
 .collection-study {
   max-width: 720px;
   margin: 0 auto;
-  padding: 1.5rem 1rem 3rem;
+  padding: var(--page-gutter-t) var(--page-gutter-x) var(--page-gutter-b);
   text-align: left;
 }
 
@@ -30,9 +30,9 @@
 }
 
 .collection-study__section {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--page-section-stack);
+  padding-bottom: var(--page-section-pad-b);
+  border-bottom: 1px solid var(--divider-line);
 }
 
 .collection-study__section:last-of-type {
