@@ -98,17 +98,17 @@
   background: linear-gradient(
     118deg,
     #ffffff 0%,
-    #e4e4e7 22%,
-    #52525b 48%,
-    #fafafa 52%,
-    #71717a 78%,
-    #f4f4f5 100%
+    #bdbdbd 26%,
+    #171717 48%,
+    #ffffff 52%,
+    #737373 74%,
+    #e5e5e5 100%
   );
   background-size: 340% 340%;
   background-position: 12% 45%;
   box-shadow:
-    0 0 0 2px color-mix(in srgb, var(--text-h) 12%, transparent),
-    0 0 10px rgba(255, 255, 255, 0.55),
+    0 0 0 2px rgba(0, 0, 0, 0.14),
+    0 0 12px rgba(255, 255, 255, 0.65),
     var(--shadow-sm);
   animation: app-shell-brand-dot-sparkle 1.35s ease-in-out infinite;
 }
@@ -119,17 +119,17 @@
     background-position: 6% 38%;
     filter: brightness(1);
     box-shadow:
-      0 0 0 2px color-mix(in srgb, var(--text-h) 12%, transparent),
-      0 0 8px rgba(255, 255, 255, 0.35),
+      0 0 0 2px rgba(0, 0, 0, 0.14),
+      0 0 8px rgba(255, 255, 255, 0.25),
       var(--shadow-sm);
   }
   50% {
     background-position: 94% 62%;
-    filter: brightness(1.55);
+    filter: brightness(1.45);
     box-shadow:
-      0 0 0 2px color-mix(in srgb, var(--accent) 45%, transparent),
-      0 0 16px 6px rgba(255, 255, 255, 0.95),
-      0 0 28px 8px rgba(255, 255, 255, 0.35),
+      0 0 0 2px rgba(0, 0, 0, 0.28),
+      0 0 18px 7px rgba(255, 255, 255, 1),
+      0 0 28px 10px rgba(255, 255, 255, 0.4),
       var(--shadow-sm);
   }
 }
@@ -213,10 +213,10 @@
   .app-shell__brand::before {
     animation: none;
     filter: none;
-    background: linear-gradient(145deg, #71717a, #3f3f46);
+    background: linear-gradient(145deg, #737373, #171717);
     background-size: auto;
     box-shadow:
-      0 0 0 2px color-mix(in srgb, var(--text-h) 12%, transparent),
+      0 0 0 2px rgba(0, 0, 0, 0.14),
       var(--shadow-sm);
   }
 }

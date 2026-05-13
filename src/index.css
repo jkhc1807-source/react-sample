@@ -9,19 +9,19 @@
   --space-10: 2.5rem;
   --space-12: 3rem;
 
-  --text: #57534e;
-  --text-muted: color-mix(in srgb, var(--text) 78%, var(--text-h));
-  --text-h: #0c0c0d;
-  --bg: #f4f4f5;
-  --border: rgba(12, 12, 14, 0.09);
-  --code-bg: #e8e8ea;
+  --text: #404040;
+  --text-muted: color-mix(in srgb, var(--text) 72%, var(--text-h));
+  --text-h: #000000;
+  --bg: #fafafa;
+  --border: rgba(0, 0, 0, 0.12);
+  --code-bg: #f0f0f0;
   --surface: #ffffff;
-  --surface-soft: color-mix(in srgb, var(--surface) 92%, var(--text-h) 8%);
-  --surface-muted: color-mix(in srgb, var(--surface) 94%, var(--text-h));
-  --accent: #3f3f46;
-  --accent-bg: color-mix(in srgb, var(--accent) 11%, transparent);
-  --accent-border: color-mix(in srgb, var(--accent) 38%, var(--border));
-  --social-bg: color-mix(in srgb, var(--surface) 97%, var(--text-h) 3%);
+  --surface-soft: #f5f5f5;
+  --surface-muted: #ebebeb;
+  --accent: #0a0a0a;
+  --accent-bg: rgba(0, 0, 0, 0.06);
+  --accent-border: rgba(0, 0, 0, 0.2);
+  --social-bg: #f7f7f7;
   --shadow-sm: 0 1px 2px rgba(12, 10, 16, 0.05);
   --shadow-md:
     0 4px 6px -1px rgba(12, 10, 16, 0.06), 0 2px 4px -2px rgba(12, 10, 16, 0.04);
@@ -35,14 +35,14 @@
   --ui-radius-xl: 18px;
   --ui-radius-pill: 999px;
   --ui-on-accent: #ffffff;
-  --ui-focus-ring: color-mix(in srgb, var(--text-h) 28%, transparent);
+  --ui-focus-ring: rgba(0, 0, 0, 0.35);
   --ui-danger: #e11d48;
   --ui-danger-soft: color-mix(in srgb, #e11d48 18%, var(--bg));
   --ui-control-bg: var(--surface);
   --ui-control-border: var(--border);
   --ui-elevated: var(--surface);
   --ui-panel-border: var(--border);
-  --ui-scrim: rgba(8, 6, 13, 0.52);
+  --ui-scrim: rgba(0, 0, 0, 0.55);
   --ui-code-surface: var(--code-bg);
 
   --sans:
@@ -77,30 +77,32 @@ html {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #a1a1aa;
-    --text-muted: color-mix(in srgb, var(--text) 85%, var(--text-h));
-    --text-h: #f4f4f5;
-    --bg: #18181b;
-    --border: rgba(244, 244, 245, 0.1);
-    --code-bg: #27272a;
-    --surface: #27272a;
-    --surface-soft: color-mix(in srgb, var(--surface) 90%, var(--text-h) 10%);
-    --surface-muted: color-mix(in srgb, var(--surface) 92%, var(--text-h));
-    --accent: #d4d4d8;
-    --accent-bg: color-mix(in srgb, var(--accent) 14%, transparent);
-    --accent-border: color-mix(in srgb, var(--accent) 36%, transparent);
-    --social-bg: color-mix(in srgb, var(--surface) 96%, var(--text-h) 4%);
+    --text: #a8a8a8;
+    --text-muted: color-mix(in srgb, var(--text) 82%, var(--text-h));
+    --text-h: #fafafa;
+    --bg: #0a0a0a;
+    --border: rgba(255, 255, 255, 0.14);
+    --code-bg: #141414;
+    --surface: #171717;
+    --surface-soft: #1a1a1a;
+    --surface-muted: #262626;
+    --accent: #f5f5f5;
+    --accent-bg: rgba(255, 255, 255, 0.08);
+    --accent-border: rgba(255, 255, 255, 0.22);
+    --social-bg: #141414;
+    --ui-on-accent: #0a0a0a;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
     --shadow-md: 0 6px 16px -4px rgba(0, 0, 0, 0.45);
     --shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.55);
 
-    --ui-control-bg: color-mix(in srgb, var(--bg) 74%, #08080c);
-    --ui-control-border: color-mix(in srgb, var(--border) 86%, #ffffff 14%);
-    --ui-elevated: color-mix(in srgb, var(--bg) 84%, #ffffff 8%);
-    --ui-panel-border: color-mix(in srgb, var(--border) 92%, #ffffff 10%);
+    --ui-control-bg: #141414;
+    --ui-control-border: rgba(255, 255, 255, 0.14);
+    --ui-elevated: #1c1c1c;
+    --ui-panel-border: rgba(255, 255, 255, 0.12);
     --ui-scrim: rgba(0, 0, 0, 0.56);
     --ui-danger-soft: color-mix(in srgb, #fb7185 16%, var(--bg));
     --ui-code-surface: var(--code-bg);
+    --ui-focus-ring: rgba(255, 255, 255, 0.42);
   }
 
 }

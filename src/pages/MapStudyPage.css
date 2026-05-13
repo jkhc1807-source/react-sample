@@ -29,7 +29,7 @@
 }
 
 .map-study__title {
-  margin: 0 0 0.5rem;
+  margin: 0 0 1.25rem;
   font-size: 1.75rem;
 }
 
@@ -66,7 +66,7 @@
 .map-study__dl dt {
   margin: 0;
   font-weight: 600;
-  color: color-mix(in srgb, var(--accent) 88%, #fff);
+  color: var(--text-h);
 }
 
 .map-study__dl dd {
@@ -84,8 +84,8 @@
   border-bottom: none;
 }
 
-.map-study__section h2 {
-  margin: 0 0 0.5rem;
+.map-study__section > :is(h1, h2) {
+  margin: 0 0 1.125rem;
   font-size: 1.15rem;
 }
 
@@ -203,15 +203,15 @@
 
 @media (prefers-color-scheme: light) {
   .map-study__label {
-    color: #64748b;
+    color: #525252;
   }
 
   .map-study__lead {
-    color: #3c3c3c;
+    color: var(--text);
   }
 
   .map-study__section p {
-    color: #444;
+    color: var(--text);
   }
 
   .map-study__code {
@@ -225,28 +225,28 @@
   }
 
   .map-study__dl dt {
-    color: var(--accent);
+    color: var(--text-h);
   }
 
   .map-study__dl dd {
-    color: #334155;
+    color: #404040;
   }
 
   .map-study__demo-list--cols li {
-    background: #f1f5f9;
+    background: #f0f0f0;
   }
 
   .map-study__table th,
   .map-study__table td {
-    border-color: #d4d4d8;
+    border-color: #d4d4d4;
   }
 
   .map-study__table th {
-    background: #f4f4f5;
+    background: #ececec;
   }
 
   .map-study__tag {
-    background: #f4f4f5;
+    background: #ebebeb;
   }
 
   .map-study__btn {
