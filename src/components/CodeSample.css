@@ -86,7 +86,7 @@
 
 @media (prefers-color-scheme: light) {
   .code-sample__copy {
-    color: color-mix(in srgb, var(--accent) 45%, #312e81);
+    color: color-mix(in srgb, var(--accent) 50%, var(--text-h));
   }
 
   .code-sample__pre {

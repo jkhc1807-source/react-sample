@@ -92,41 +92,44 @@
 .app-shell__brand::before {
   content: '';
   flex-shrink: 0;
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: var(--ui-radius-pill);
   background: linear-gradient(
-    125deg,
-    color-mix(in srgb, var(--accent) 70%, #ffffff),
-    var(--accent),
-    color-mix(in srgb, var(--accent) 55%, var(--text-h)),
-    var(--accent)
+    118deg,
+    #ffffff 0%,
+    #e4e4e7 22%,
+    #52525b 48%,
+    #fafafa 52%,
+    #71717a 78%,
+    #f4f4f5 100%
   );
-  background-size: 240% 240%;
-  background-position: 0% 50%;
+  background-size: 340% 340%;
+  background-position: 12% 45%;
   box-shadow:
-    0 0 0 3px color-mix(in srgb, var(--accent-bg) 75%, transparent),
-    0 0 10px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 0 0 2px color-mix(in srgb, var(--text-h) 12%, transparent),
+    0 0 10px rgba(255, 255, 255, 0.55),
     var(--shadow-sm);
-  animation: app-shell-brand-dot-sparkle 2.4s ease-in-out infinite;
+  animation: app-shell-brand-dot-sparkle 1.35s ease-in-out infinite;
 }
 
 @keyframes app-shell-brand-dot-sparkle {
   0%,
   100% {
-    background-position: 0% 40%;
+    background-position: 6% 38%;
     filter: brightness(1);
     box-shadow:
-      0 0 0 3px color-mix(in srgb, var(--accent-bg) 75%, transparent),
-      0 0 8px color-mix(in srgb, var(--accent) 30%, transparent),
+      0 0 0 2px color-mix(in srgb, var(--text-h) 12%, transparent),
+      0 0 8px rgba(255, 255, 255, 0.35),
       var(--shadow-sm);
   }
   50% {
-    background-position: 100% 60%;
-    filter: brightness(1.12);
+    background-position: 94% 62%;
+    filter: brightness(1.55);
     box-shadow:
-      0 0 0 3px color-mix(in srgb, var(--accent-bg) 85%, transparent),
-      0 0 14px color-mix(in srgb, var(--accent) 55%, transparent),
+      0 0 0 2px color-mix(in srgb, var(--accent) 45%, transparent),
+      0 0 16px 6px rgba(255, 255, 255, 0.95),
+      0 0 28px 8px rgba(255, 255, 255, 0.35),
       var(--shadow-sm);
   }
 }
@@ -210,14 +213,10 @@
   .app-shell__brand::before {
     animation: none;
     filter: none;
-    background: linear-gradient(
-      145deg,
-      var(--accent),
-      color-mix(in srgb, var(--accent) 55%, var(--text-h))
-    );
+    background: linear-gradient(145deg, #71717a, #3f3f46);
     background-size: auto;
     box-shadow:
-      0 0 0 3px color-mix(in srgb, var(--accent-bg) 75%, transparent),
+      0 0 0 2px color-mix(in srgb, var(--text-h) 12%, transparent),
       var(--shadow-sm);
   }
 }
