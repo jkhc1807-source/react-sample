@@ -1,0 +1,80 @@
+#root button.ui-btn {
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--ui-radius);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    background 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease,
+    box-shadow 0.16s ease,
+    opacity 0.16s ease;
+}
+
+#root button.ui-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--ui-focus-ring);
+}
+
+#root button.ui-btn:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+#root button.ui-btn--primary {
+  background: var(--accent);
+  color: var(--ui-on-accent);
+  border-color: color-mix(in srgb, var(--accent) 78%, #000);
+  box-shadow: 0 1px 0 color-mix(in srgb, #fff 12%, transparent);
+}
+
+#root button.ui-btn--primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--accent) 90%, #fff);
+  border-color: color-mix(in srgb, var(--accent) 65%, #000);
+}
+
+#root button.ui-btn--secondary {
+  background: var(--ui-control-bg);
+  color: var(--text-h);
+  border-color: var(--ui-control-border);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--text-h) 6%, transparent);
+}
+
+#root button.ui-btn--secondary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ui-control-bg) 88%, var(--accent) 12%);
+  border-color: color-mix(in srgb, var(--ui-control-border) 70%, var(--accent) 30%);
+}
+
+#root button.ui-btn--ghost {
+  background: transparent;
+  color: var(--accent);
+  border-color: transparent;
+}
+
+#root button.ui-btn--ghost:hover:not(:disabled) {
+  background: var(--accent-bg);
+}
+
+#root button.ui-btn--sm {
+  padding: 0.32rem 0.78rem;
+  font-size: 0.8rem;
+  border-radius: var(--ui-radius-sm);
+}
+
+@media (prefers-color-scheme: dark) {
+  #root button.ui-btn--secondary {
+    background: color-mix(in srgb, var(--bg) 88%, #fff 6%);
+    box-shadow: none;
+  }
+
+  #root button.ui-btn--secondary:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--bg) 82%, var(--accent) 14%);
+  }
+
+  #root button.ui-btn--primary {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  }
+}

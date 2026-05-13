@@ -1,0 +1,43 @@
+.ui-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  max-width: min(100%, 420px);
+  text-align: left;
+}
+
+.ui-check__input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.14rem;
+  flex: 0 0 auto;
+  accent-color: var(--accent);
+  cursor: pointer;
+  border-radius: var(--ui-radius-sm);
+}
+
+.ui-check__input:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.ui-check__body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ui-check__label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-h);
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.ui-check__desc {
+  margin: 0.28rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text);
+}

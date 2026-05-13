@@ -1,0 +1,116 @@
+.ui-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--ui-scrim);
+  animation: ui-modal-in 0.18s ease-out;
+}
+
+@keyframes ui-modal-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ui-modal {
+  width: min(100%, 420px);
+  max-height: min(86vh, 540px);
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--ui-radius-lg);
+  background: var(--ui-elevated);
+  border: 1px solid var(--ui-panel-border);
+  box-shadow: var(--shadow);
+  animation: ui-modal-pop 0.2s ease-out;
+}
+
+.ui-modal:focus {
+  outline: none;
+}
+
+.ui-modal:focus-visible {
+  box-shadow:
+    var(--shadow),
+    0 0 0 2px var(--bg),
+    0 0 0 4px var(--ui-focus-ring);
+}
+
+@keyframes ui-modal-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.ui-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--ui-panel-border);
+}
+
+.ui-modal__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-h);
+  letter-spacing: -0.02em;
+}
+
+#root button.ui-modal__close {
+  padding: 0.28rem 0.5rem;
+  min-width: 2rem;
+  border-radius: var(--ui-radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+#root button.ui-modal__close:hover {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+#root button.ui-modal__close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ui-focus-ring);
+}
+
+.ui-modal__body {
+  padding: 1.1rem;
+  overflow: auto;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--text-h) 38%, var(--text));
+}
+
+.ui-modal__footer {
+  padding: 0.85rem 1.1rem;
+  border-top: 1px solid var(--ui-panel-border);
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .ui-modal__body {
+    color: color-mix(in srgb, var(--text) 40%, var(--text-h));
+  }
+}

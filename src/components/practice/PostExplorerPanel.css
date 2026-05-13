@@ -1,0 +1,123 @@
+.post-explorer {
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  background: var(--social-bg);
+}
+
+.post-explorer__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.post-explorer__btn {
+  font: inherit;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.post-explorer__btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.post-explorer__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.post-explorer__field--grow {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.post-explorer__input,
+.post-explorer__select {
+  font: inherit;
+  font-weight: 400;
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: inherit;
+}
+
+.post-explorer__meta {
+  margin: 0 0 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.post-explorer__meta code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+}
+
+.post-explorer__err {
+  color: #b91c1c;
+  margin: 0 0 0.5rem;
+}
+
+.post-explorer__empty {
+  margin: 0.5rem 0;
+  color: var(--text);
+  opacity: 0.85;
+}
+
+.post-explorer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: min(420px, 55vh);
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.post-explorer__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.45rem 0.65rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.post-explorer__item:last-child {
+  border-bottom: none;
+}
+
+.post-explorer__badge {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  flex: 0 0 auto;
+}
+
+.post-explorer__title {
+  flex: 1 1 160px;
+  min-width: 0;
+  line-height: 1.35;
+}
+
+.post-explorer__note {
+  margin: 0.5rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text);
+  opacity: 0.75;
+}

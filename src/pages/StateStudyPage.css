@@ -1,0 +1,245 @@
+.state-study {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  text-align: left;
+}
+
+.state-study__header {
+  margin-bottom: 2rem;
+}
+
+.state-study__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.state-study__back {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.state-study__back:hover {
+  text-decoration: underline;
+}
+
+.state-study__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+}
+
+.state-study__lead {
+  margin: 0;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.state-study__lead code {
+  color: var(--accent);
+}
+
+.state-study__section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.state-study__section:last-of-type {
+  border-bottom: none;
+}
+
+.state-study__section h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.state-study__section p {
+  margin: 0 0 0.75rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.state-study__label {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.02em;
+}
+
+.state-study__code {
+  margin: 0 0 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #1a1a1a;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.state-study__mono {
+  margin: 0 0 0.75rem;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.state-study__list {
+  margin: 0 0 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.state-study__list--inline {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.state-study__tasks {
+  list-style: none;
+  padding-left: 0;
+}
+
+.state-study__tasks li {
+  margin-bottom: 0.35rem;
+}
+
+.state-study__task {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.state-study__task:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.state-study__task--done {
+  opacity: 0.75;
+  text-decoration: line-through;
+}
+
+.state-study__hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.state-study__hint--stack {
+  margin-top: 0.75rem;
+}
+
+.state-study__form-block {
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.state-study__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.state-study__field input {
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.25);
+  color: inherit;
+  font-size: 0.95rem;
+}
+
+.state-study__btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.state-study__btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.state-study__btn--small {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.85rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .state-study__label {
+    color: #64748b;
+  }
+
+  .state-study__lead {
+    color: #3c3c3c;
+  }
+
+  .state-study__section p {
+    color: #444;
+  }
+
+  .state-study__code {
+    background: #f4f4f5;
+    border-color: #e4e4e7;
+  }
+
+  .state-study__mono {
+    color: #1e293b;
+  }
+
+  .state-study__task {
+    border-color: #d4d4d8;
+    background: #fff;
+  }
+
+  .state-study__task:hover {
+    background: #f4f4f5;
+  }
+
+  .state-study__form-block {
+    border-color: #e4e4e7;
+    background: #fafafa;
+  }
+
+  .state-study__field input {
+    border-color: #d4d4d8;
+    background: #fff;
+  }
+
+  .state-study__hint {
+    color: #64748b;
+  }
+
+  .state-study__btn {
+    border-color: #d4d4d8;
+    background: #fff;
+  }
+
+  .state-study__btn:hover {
+    background: #f4f4f5;
+  }
+}

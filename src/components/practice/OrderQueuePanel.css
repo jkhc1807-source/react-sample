@@ -1,0 +1,92 @@
+.order-queue {
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  background: var(--social-bg);
+}
+
+.order-queue__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.65rem;
+}
+
+.order-queue__stat {
+  font: inherit;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.order-queue__stat--on {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.order-queue__add {
+  font: inherit;
+  margin-bottom: 0.75rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  background: var(--bg);
+}
+
+.order-queue__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.order-queue__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.order-queue__pill {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+  background: var(--code-bg);
+}
+
+.order-queue__actions {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.order-queue__actions button {
+  font: inherit;
+  padding: 0.3rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.order-queue__actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.order-queue__del {
+  color: #b91c1c;
+}
+
+@media (prefers-color-scheme: dark) {
+  .order-queue__del {
+    color: #fca5a5;
+  }
+}
