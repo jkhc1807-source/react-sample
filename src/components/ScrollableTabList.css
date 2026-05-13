@@ -1,7 +1,7 @@
 .scroll-tab-bar {
   display: flex;
   align-items: stretch;
-  gap: 0;
+  gap: 0.55rem;
   min-width: 0;
   width: 100%;
 }
@@ -9,16 +9,18 @@
 .scroll-tab-bar__track {
   flex: 1;
   min-width: 0;
+  padding-inline: 0.35rem;
 }
 
 .scroll-tab-bar__btn {
   flex-shrink: 0;
   align-self: stretch;
-  width: 2.25rem;
+  width: 2.35rem;
   margin: 0;
-  padding: 0 0.15rem;
-  border: none;
-  border-bottom: 1px solid var(--border);
+  padding: 0 0.2rem;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: var(--ui-radius-sm);
   background: color-mix(in srgb, var(--bg) 88%, var(--surface));
   color: var(--text-h);
   font-size: 1.35rem;
@@ -28,11 +30,13 @@
   transition:
     background 0.15s ease,
     color 0.15s ease,
-    opacity 0.15s ease;
+    opacity 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .scroll-tab-bar__btn:hover:not(:disabled) {
   background: color-mix(in srgb, var(--accent-bg) 40%, var(--bg));
+  border-color: color-mix(in srgb, var(--accent-border) 55%, var(--border));
   color: var(--accent);
 }
 
@@ -45,14 +49,6 @@
 .scroll-tab-bar__btn:disabled {
   opacity: 0.28;
   cursor: default;
-}
-
-.scroll-tab-bar__btn--prev {
-  border-right: 1px solid var(--border);
-}
-
-.scroll-tab-bar__btn--next {
-  border-left: 1px solid var(--border);
 }
 
 @media (prefers-reduced-motion: reduce) {
