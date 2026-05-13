@@ -1,14 +1,16 @@
+import { apiUrl } from './apiBase.js'
+
 const JSON_HEADERS = { 'Content-Type': 'application/json' }
 
 export async function fetchMe() {
-  const res = await fetch('/api/auth/me', { credentials: 'include' })
+  const res = await fetch(apiUrl('/api/auth/me'), { credentials: 'include' })
   if (!res.ok) return null
   const data = await res.json()
   return data.user ?? null
 }
 
 export async function loginRequest(email, password) {
-  const res = await fetch('/api/auth/login', {
+  const res = await fetch(apiUrl('/api/auth/login'), {
     method: 'POST',
     headers: JSON_HEADERS,
     credentials: 'include',
@@ -25,7 +27,7 @@ export async function loginRequest(email, password) {
 }
 
 export async function registerRequest(email, password) {
-  const res = await fetch('/api/auth/register', {
+  const res = await fetch(apiUrl('/api/auth/register'), {
     method: 'POST',
     headers: JSON_HEADERS,
     credentials: 'include',
@@ -42,7 +44,7 @@ export async function registerRequest(email, password) {
 }
 
 export async function logoutRequest() {
-  await fetch('/api/auth/logout', {
+  await fetch(apiUrl('/api/auth/logout'), {
     method: 'POST',
     credentials: 'include',
   })
