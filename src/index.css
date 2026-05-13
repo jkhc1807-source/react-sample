@@ -28,6 +28,11 @@
   --shadow:
     0 12px 40px -12px rgba(12, 10, 16, 0.12), 0 8px 16px -8px rgba(12, 10, 16, 0.08);
 
+  /* 페이지 머리·섹션: 제목 ↔ 본문 간격 (학습/허브 공통) */
+  --page-hero-title-gap: 1rem;
+  --page-section-title-gap: 1rem;
+  --page-paragraph-gap: 0.8rem;
+
   /* 폼·버튼·모달 등 UI 컴포넌트 공통 토큰 (--accent와 맞춤) */
   --ui-radius: 10px;
   --ui-radius-sm: 7px;
@@ -159,7 +164,7 @@ h2 {
   font-size: 24px;
   line-height: 118%;
   letter-spacing: -0.24px;
-  margin: 0 0 8px;
+  margin: 0 0 var(--page-section-title-gap);
   @media (max-width: 1024px) {
     font-size: 20px;
   }

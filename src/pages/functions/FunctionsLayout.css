@@ -10,7 +10,7 @@
 }
 
 .fn-layout__title {
-  margin: 0 0 0.35rem;
+  margin: 0 0 var(--page-hero-title-gap);
   font-size: clamp(1.25rem, 3.5vw, 1.5rem);
   color: var(--text-h);
 }

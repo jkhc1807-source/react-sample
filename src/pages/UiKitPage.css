@@ -29,7 +29,7 @@
 }
 
 .ui-kit__title {
-  margin: 0 0 0.6rem;
+  margin: 0 0 var(--page-hero-title-gap);
   font-size: clamp(1.45rem, 4vw, 1.85rem);
   letter-spacing: -0.03em;
   color: var(--text-h);

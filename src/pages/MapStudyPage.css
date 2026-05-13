@@ -29,7 +29,7 @@
 }
 
 .map-study__title {
-  margin: 0 0 1.25rem;
+  margin: 0 0 var(--page-hero-title-gap);
   font-size: 1.75rem;
 }
 
@@ -85,12 +85,12 @@
 }
 
 .map-study__section > :is(h1, h2) {
-  margin: 0 0 1.125rem;
+  margin: 0 0 var(--page-section-title-gap);
   font-size: 1.15rem;
 }
 
 .map-study__section p {
-  margin: 0 0 0.75rem;
+  margin: 0 0 var(--page-paragraph-gap);
   line-height: 1.55;
   color: color-mix(in srgb, var(--text) 55%, var(--text-h));
 }
