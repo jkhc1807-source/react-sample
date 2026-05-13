@@ -1,7 +1,8 @@
 .auth-page {
   max-width: 26rem;
   margin: 0 auto;
-  padding: var(--space-2) 0 var(--space-10);
+  padding: var(--space-2) clamp(0.25rem, 3vw, var(--space-2)) var(--space-10);
+  box-sizing: border-box;
 }
 
 .auth-page__head {
