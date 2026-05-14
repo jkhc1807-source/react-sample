@@ -38,6 +38,49 @@ export default function Button({
 // 스타일: src/components/ui/Button.css (같은 폴더에 두세요)
 `
 
+export const UI_KIT_BADGE = `// src/components/ui/Badge.jsx
+import './Badge.css'
+
+const VARIANT = {
+  neutral: 'ui-badge--neutral',
+  accent: 'ui-badge--accent',
+  success: 'ui-badge--success',
+  warning: 'ui-badge--warning',
+  danger: 'ui-badge--danger',
+}
+
+export default function Badge({ children, variant = 'neutral', className = '' }) {
+  const v = VARIANT[variant] || VARIANT.neutral
+  return <span className={['ui-badge', v, className].filter(Boolean).join(' ')}>{children}</span>
+}
+
+// 스타일: src/components/ui/Badge.css
+`
+
+export const UI_KIT_SURFACE_CARD = `// src/components/ui/SurfaceCard.jsx
+import './SurfaceCard.css'
+
+export default function SurfaceCard({ title, subtitle, meta, children, footer }) {
+  return (
+    <article className="ui-surface-card">
+      {(title || subtitle || meta) && (
+        <header className="ui-surface-card__head">
+          <div className="ui-surface-card__titles">
+            {title ? <h3 className="ui-surface-card__title">{title}</h3> : null}
+            {subtitle ? <p className="ui-surface-card__subtitle">{subtitle}</p> : null}
+          </div>
+          {meta ? <div className="ui-surface-card__meta">{meta}</div> : null}
+        </header>
+      )}
+      {children ? <div className="ui-surface-card__body">{children}</div> : null}
+      {footer ? <footer className="ui-surface-card__footer">{footer}</footer> : null}
+    </article>
+  )
+}
+
+// 스타일: src/components/ui/SurfaceCard.css
+`
+
 export const UI_KIT_TEXTFIELD = `// src/components/ui/TextField.jsx
 import { useId } from 'react'
 import './TextField.css'
@@ -52,6 +95,7 @@ export default function TextField({
   hint,
   error,
   disabled,
+  readOnly,
   required,
   autoComplete,
 }) {
@@ -68,12 +112,13 @@ export default function TextField({
       )}
       <input
         id={inputId}
-        className={\`ui-field__input\${error ? ' ui-field__input--error' : ''}\`}
+        className={\`ui-field__input\${error ? ' ui-field__input--error' : ''}\${readOnly ? ' ui-field__input--readonly' : ''}\`}
         type={type}
         value={value}
-        onChange={onChange}
+        onChange={readOnly ? undefined : onChange}
         placeholder={placeholder}
         disabled={disabled}
+        readOnly={readOnly}
         required={required}
         autoComplete={autoComplete}
         aria-invalid={Boolean(error)}
@@ -466,4 +511,185 @@ export default function App() {
     </>
   )
 }
+`
+
+export const UI_KIT_TYPE_SCALE = `// Typography 스케일 마크업 (학습·문서 페이지에서 재사용)
+// 스타일: src/pages/UiKitPage.css — .ui-kit__type-scale, .ui-kit__type-sample, .ui-kit__type-meta
+
+<div className="ui-kit__type-scale">
+  <p className="ui-kit__type-sample ui-kit__type-sample--h1">
+    <span className="ui-kit__type-meta">Heading 1</span>
+    The Life of UI Kit
+  </p>
+  <p className="ui-kit__type-sample ui-kit__type-sample--h2">
+    <span className="ui-kit__type-meta">Heading 2</span>
+    Section title
+  </p>
+  <p className="ui-kit__type-sample ui-kit__type-sample--body">
+    <span className="ui-kit__type-meta">Body</span>
+    본문 문단입니다. <code>code</code>는 인라인만.
+  </p>
+</div>
+`
+
+export const UI_KIT_INLINE_ALERTS = `import './UiKitInlineAlerts.css'
+
+<div className="ui-kit__alerts">
+  <div className="ui-kit__alert ui-kit__alert--info" role="status">
+    <strong>Info</strong>
+    새 기능이 배포되었습니다.
+  </div>
+  <div className="ui-kit__alert ui-kit__alert--success" role="status">
+    <strong>Success</strong>
+    저장이 완료되었습니다.
+  </div>
+  <div className="ui-kit__alert ui-kit__alert--warning" role="alert">
+    <strong>Warning</strong>
+    되돌릴 수 없는 작업입니다.
+  </div>
+  <div className="ui-kit__alert ui-kit__alert--danger" role="alert">
+    <strong>Danger</strong>
+    결제 수단을 갱신해 주세요.
+  </div>
+</div>
+`
+
+export const UI_KIT_TEXT_LINKS = `// 본문 링크 톤 (앵커·강조·비활성 느낌)
+// 스타일: src/pages/UiKitPage.css — .ui-kit__link-row, .ui-kit__link, .ui-kit__link--default 등
+
+<p className="ui-kit__link-row">
+  <a href="#section" className="ui-kit__link ui-kit__link--default">
+    기본 링크
+  </a>
+</p>
+<p className="ui-kit__link-row">
+  <a href="/playground" className="ui-kit__link ui-kit__link--accent">
+    강조 링크
+  </a>
+</p>
+<p className="ui-kit__link-row">
+  <span className="ui-kit__link ui-kit__link--muted">보조·비활성 느낌 텍스트</span>
+</p>
+`
+
+export const UI_KIT_TEXTFIELD_READONLY = `// 읽기 전용 — TextField 컴포넌트 (src/components/ui/TextField.jsx)
+import TextField from './TextField'
+
+<TextField
+  label="username"
+  value="yalco.student"
+  readOnly
+  hint="서버에서 내려준 값을 그대로 보여 줄 때"
+/>
+
+// 스타일: TextField.css (.ui-field__input--readonly) + 동일 파일의 :read-only
+`
+
+export const UI_KIT_COUNTER_PATTERN = `// 카운터 + output + 핀 토글 (샘플 모음 «카운터와 핀»)
+import { useState } from 'react'
+import { Button } from './components/ui'
+
+export function CounterPinDemo() {
+  const [count, setCount] = useState(0)
+  const [pinned, setPinned] = useState(false)
+
+  return (
+    <div className="ui-kit__counter-block">
+      <div className="ui-kit__counter" aria-label="카운터">
+        <Button variant="secondary" size="sm" type="button" onClick={() => setCount((c) => c - 1)}>
+          −
+        </Button>
+        <output className="ui-kit__counter-value">{count}</output>
+        <Button variant="secondary" size="sm" type="button" onClick={() => setCount((c) => c + 1)}>
+          +
+        </Button>
+      </div>
+      <Button
+        variant={pinned ? 'primary' : 'secondary'}
+        size="sm"
+        type="button"
+        onClick={() => setPinned((p) => !p)}
+      >
+        {pinned ? '📌 ' : ''}핀 {pinned ? '해제' : '고정'}
+      </Button>
+    </div>
+  )
+}
+
+// 스타일: src/pages/UiKitPage.css — .ui-kit__counter-block, .ui-kit__counter, .ui-kit__counter-value, #root .ui-kit__counter > button.ui-btn
+`
+
+export const UI_KIT_TODO_PATTERN = `// 할 일 목록 + 입력 (샘플 모음 TodoListSection 과 같은 구조)
+import { useState, useEffect } from 'react'
+import { Button, TextField } from './components/ui'
+
+export function TodoDemo() {
+  const [todos, setTodos] = useState(['Learn React'])
+  const [newTodo, setNewTodo] = useState('')
+  const [notice, setNotice] = useState(null)
+
+  useEffect(() => {
+    if (!notice) return
+    const t = setTimeout(() => setNotice(null), 2500)
+    return () => clearTimeout(t)
+  }, [notice])
+
+  function add() {
+    const v = newTodo.trim()
+    if (!v) {
+      setNotice('내용을 입력해 주세요.')
+      return
+    }
+    setTodos((prev) => [...prev, v])
+    setNewTodo('')
+  }
+
+  return (
+    <>
+      <h3 className="ui-kit__todo-heading">Todo List</h3>
+      <ul className="ui-kit__todo-list">
+        {todos.map((todo, i) => (
+          <li key={\`\${todo}-\${i}\`} className="ui-kit__todo-item">
+            <span className="ui-kit__todo-text">{todo}</span>
+            <Button variant="ghost" size="sm" type="button" onClick={() => setTodos((t) => t.filter((_, j) => j !== i))}>
+              Delete
+            </Button>
+          </li>
+        ))}
+      </ul>
+      <div className="ui-kit__todo-form">
+        <TextField label="새 할 일" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} placeholder="할 일" />
+        <Button variant="primary" type="button" onClick={add}>
+          Add task
+        </Button>
+      </div>
+      {notice && (
+        <div className="ui-kit__todo-notice" role="status">
+          {notice}
+        </div>
+      )}
+    </>
+  )
+}
+
+// 스타일: src/pages/UiKitPage.css — .ui-kit__todo-heading, .ui-kit__todo-list, .ui-kit__todo-item 등
+`
+
+export const UI_KIT_SURFACE_CARD_USAGE = `// SurfaceCard + Badge 조합 (그리드는 페이지 쪽)
+import Badge from './Badge'
+import SurfaceCard from './SurfaceCard'
+
+<div className="ui-kit__card-grid">
+  <SurfaceCard
+    title="Props in React"
+    subtitle="한 컴포넌트에서 다른 컴포넌트로 데이터를 넘깁니다."
+    meta={<Badge variant="accent">Topic</Badge>}
+    footer="Author: Alice"
+  >
+    카드 본문
+  </SurfaceCard>
+</div>
+
+// 그리드 스타일: src/pages/UiKitPage.css — .ui-kit__card-grid
+// 카드·뱃지 단일 컴포넌트 소스: SurfaceCard.jsx / Badge.jsx (+ 각 .css)
 `

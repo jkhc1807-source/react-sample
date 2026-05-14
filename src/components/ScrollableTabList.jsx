@@ -4,7 +4,7 @@ import './ScrollableTabList.css'
 
 export default function ScrollableTabList({ children, trackClassName = '' }) {
   const ref = useRef(null)
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   const [overflow, setOverflow] = useState(false)
   const [canLeft, setCanLeft] = useState(false)
   const [canRight, setCanRight] = useState(false)
@@ -46,7 +46,7 @@ export default function ScrollableTabList({ children, trackClassName = '' }) {
     requestAnimationFrame(() => {
       active?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
     })
-  }, [pathname])
+  }, [pathname, hash])
 
   const scrollByDir = (dir) => {
     const el = ref.current

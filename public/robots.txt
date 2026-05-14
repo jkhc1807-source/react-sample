@@ -1,0 +1,3 @@
+# 크롤러 기본 허용
+User-agent: *
+Allow: /

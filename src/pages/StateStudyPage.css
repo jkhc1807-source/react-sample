@@ -1,8 +1,10 @@
 .state-study {
-  max-width: 720px;
+  max-width: var(--page-content-max);
+  width: 100%;
   margin: 0 auto;
   padding: var(--page-gutter-t) var(--page-gutter-x) var(--page-gutter-b);
   text-align: left;
+  box-sizing: border-box;
 }
 
 .state-study__header {
@@ -28,13 +30,14 @@
 
 .state-study__title {
   margin: 0 0 var(--page-hero-title-gap);
-  font-size: 1.75rem;
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  color: var(--text-h);
 }
 
 .state-study__lead {
   margin: 0;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--text);
 }
 
 .state-study__lead code {
@@ -93,45 +96,6 @@
 .state-study__list {
   margin: 0 0 0.75rem;
   padding-left: 1.25rem;
-}
-
-.state-study__list--inline {
-  list-style: none;
-  padding-left: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.state-study__tasks {
-  list-style: none;
-  padding-left: 0;
-}
-
-.state-study__tasks li {
-  margin-bottom: 0.35rem;
-}
-
-.state-study__task {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.06);
-  color: inherit;
-  cursor: pointer;
-  font-size: 0.95rem;
-}
-
-.state-study__task:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.state-study__task--done {
-  opacity: 0.75;
-  text-decoration: line-through;
 }
 
 .state-study__hint {
@@ -209,15 +173,6 @@
 
   .state-study__mono {
     color: #1e293b;
-  }
-
-  .state-study__task {
-    border-color: #d4d4d8;
-    background: #fff;
-  }
-
-  .state-study__task:hover {
-    background: #f4f4f5;
   }
 
   .state-study__form-block {

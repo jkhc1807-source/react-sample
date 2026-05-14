@@ -5,8 +5,9 @@ export default function PracticeOverviewTab() {
   return (
     <div className="extended-study">
       <section className="extended-study__section">
-        <h2 className="extended-study__title" style={{ fontSize: '1.25rem' }}>
-          이 허브에서 다루는 것
+        <h2 className="extended-study__title pr-tab__title-tight--overview">
+          개요·점검
+          <span className="pr-tab__overview-subhead">이 허브에서 다루는 것</span>
         </h2>
         <p className="extended-study__lead">
           <strong>UI·이벤트</strong> 탭은 클릭·폼·조건부 렌더·타이머·fetch·props·ref까지 한 번에 돌아볼 수
@@ -14,7 +15,7 @@ export default function PracticeOverviewTab() {
           들어간 패널입니다. <strong>폼·목록·큐</strong>는 검증 폼·id 기반 목록·주문 상태 전이를
           합쳤습니다.
         </p>
-        <ul className="extended-study__section-lead" style={{ listStyle: 'disc', paddingLeft: '1.25rem' }}>
+        <ul className="extended-study__section-lead pr-tab__bulleted-lead">
           <li>
             <Link to="/functions/coverage">함수 메뉴 → 점검표</Link>에서 배열 메서드 탭을 전부 썼는지
             확인할 수 있습니다.

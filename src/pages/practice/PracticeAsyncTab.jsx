@@ -13,7 +13,7 @@ export default function PracticeAsyncTab() {
   return (
     <div className="extended-study">
       <section className="extended-study__section">
-        <h2 className="extended-study__title" style={{ fontSize: '1.2rem' }}>
+        <h2 className="extended-study__title pr-tab__title-tight">
           effect 정리 — 인터벌·fetch 취소
         </h2>
         <CodeSample label="예시 소스 (복붙용)" fileHint="EffectCleanupDemo.jsx" code={EXT_EFFECT_CLEANUP} />
@@ -22,7 +22,7 @@ export default function PracticeAsyncTab() {
       </section>
 
       <section className="extended-study__section">
-        <h2 className="extended-study__title" style={{ fontSize: '1.2rem' }}>
+        <h2 className="extended-study__title pr-tab__title-tight">
           비동기 화면 상태 (로딩·오류·빈 목록)
         </h2>
         <CodeSample label="예시 소스 (복붙용)" fileHint="PostsAsyncDemo.jsx" code={EXT_POSTS} />
@@ -31,7 +31,7 @@ export default function PracticeAsyncTab() {
       </section>
 
       <section className="extended-study__section">
-        <h2 className="extended-study__title" style={{ fontSize: '1.2rem' }}>
+        <h2 className="extended-study__title pr-tab__title-tight">
           의존성 배열과 고착 값
         </h2>
         <CodeSample label="예시 소스 (복붙용)" fileHint="EffectDepsStaleDemo.jsx" code={EXT_DEPS_STALE} />

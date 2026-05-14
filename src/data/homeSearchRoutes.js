@@ -4,6 +4,12 @@
 export const HOME_SEARCH_ROUTES = [
   { path: '/', title: '홈', subtitle: '학습 허브 시작', keywords: ['home', '메인', '처음'] },
   {
+    path: '/faq',
+    title: '자주 묻는 질문',
+    subtitle: '소개·학습 순서·인증 데모·도움말',
+    keywords: ['faq', '질문', '도움', 'llms', 'SEO', '도움말'],
+  },
+  {
     path: '/auth',
     title: '로그인 · 회원가입',
     subtitle: 'httpOnly 쿠키 세션',
@@ -138,17 +144,23 @@ export const HOME_SEARCH_ROUTES = [
   {
     path: '/ui-kit',
     title: 'UI 키트',
-    subtitle: '버튼·입력·모달·토스트',
-    keywords: ['uikit', '모달', '토스트', '폼 컴포넌트'],
+    subtitle: '카드·뱃지·폼·모달·토스트·샘플과 동일 패턴',
+    keywords: ['uikit', '모달', '토스트', '폼 컴포넌트', '카드', '뱃지'],
+  },
+  {
+    path: '/extended-study',
+    title: '연장 학습 (구 경로)',
+    subtitle: '실무·심화 개요와 동일 — 진입 시 개요로 이동',
+    keywords: ['extended', 'extended-study', '연장', '추가 학습', '구 경로'],
   },
 ]
 
-/** 검색어 없을 때 아래 목록 순서대로 노출 */
+/** GNB 검색 비어 있을 때 추천 — 권장 학습 흐름과 동일한 앞부분 */
 const POPULAR_PATHS = [
   '/playground',
   '/functions/map',
-  '/practice/overview',
   '/ui-kit',
+  '/practice/overview',
   '/practice/async',
   '/functions/filter',
   '/practice/ui',
@@ -156,4 +168,11 @@ const POPULAR_PATHS = [
 
 export function getPopularHomeRoutes() {
   return POPULAR_PATHS.map((p) => HOME_SEARCH_ROUTES.find((r) => r.path === p)).filter(Boolean)
+}
+
+/** pathname(예: /functions/map)으로 카탈로그 항목 조회 — 없으면 null */
+export function getRouteByPath(pathname) {
+  if (!pathname) return null
+  const normalized = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname
+  return HOME_SEARCH_ROUTES.find((r) => r.path === normalized) ?? null
 }

@@ -1,0 +1,74 @@
+/* Inline alerts — UiKit과 동일 토큰 (복붙 후 경로만 맞추면 됩니다) */
+
+.ui-kit__alerts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ui-kit__alert {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: var(--ui-radius);
+  border: 1px solid transparent;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.ui-kit__alert strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.ui-kit__alert--info {
+  background: color-mix(in srgb, var(--accent) 9%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent) 22%, var(--divider-line));
+  color: var(--text);
+}
+
+.ui-kit__alert--info strong {
+  color: var(--accent);
+}
+
+.ui-kit__alert--success {
+  background: color-mix(in srgb, #059669 10%, var(--surface));
+  border-color: color-mix(in srgb, #059669 22%, var(--divider-line));
+  color: var(--text);
+}
+
+.ui-kit__alert--success strong {
+  color: #059669;
+}
+
+.ui-kit__alert--warning {
+  background: color-mix(in srgb, #d97706 11%, var(--surface));
+  border-color: color-mix(in srgb, #d97706 24%, var(--divider-line));
+  color: var(--text);
+}
+
+.ui-kit__alert--warning strong {
+  color: #d97706;
+}
+
+.ui-kit__alert--danger {
+  background: var(--ui-danger-soft);
+  border-color: color-mix(in srgb, var(--ui-danger) 28%, var(--divider-line));
+  color: var(--text);
+}
+
+.ui-kit__alert--danger strong {
+  color: var(--ui-danger);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ui-kit__alert--success strong {
+    color: color-mix(in srgb, #34d399 75%, #059669);
+  }
+
+  .ui-kit__alert--warning strong {
+    color: color-mix(in srgb, #fbbf24 80%, #d97706);
+  }
+}

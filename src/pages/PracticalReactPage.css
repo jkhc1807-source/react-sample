@@ -1,8 +1,10 @@
 .practical-react {
-  max-width: 720px;
+  max-width: var(--page-content-max);
+  width: 100%;
   margin: 0 auto;
   padding: var(--page-gutter-t) var(--page-gutter-x) var(--page-gutter-b);
   text-align: left;
+  box-sizing: border-box;
 }
 
 .practical-react__header {
@@ -28,13 +30,14 @@
 
 .practical-react__title {
   margin: 0 0 var(--page-hero-title-gap);
-  font-size: 1.75rem;
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  color: var(--text-h);
 }
 
 .practical-react__lead {
   margin: 0;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--text);
 }
 
 .practical-react__lead code {
@@ -157,10 +160,8 @@
   cursor: not-allowed;
 }
 
-.practical-react__err {
-  color: #fca5a5;
-  font-size: 0.9rem;
-  margin: 0.5rem 0;
+.practical-react__btn--stack {
+  margin-top: 0.5rem;
 }
 
 .practical-react__list {
@@ -234,12 +235,8 @@
     background: #fff;
   }
 
-  .practical-react__btn:hover:not(:disabled) {
-    background: #f4f4f5;
-  }
-
-  .practical-react__err {
-    color: #b91c1c;
+.practical-react__btn:hover:not(:disabled) {
+  background: #f4f4f5;
   }
 
   .practical-react__card {

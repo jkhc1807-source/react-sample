@@ -1,0 +1,25 @@
+.glossary-fragment-demo__dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
+  align-items: baseline;
+  max-width: 100%;
+}
+
+.glossary-fragment-demo__dl dt {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.glossary-fragment-demo__dl dd {
+  margin: 0;
+  color: color-mix(in srgb, var(--text-h) 82%, var(--text));
+}
+
+@media (prefers-color-scheme: light) {
+  .glossary-fragment-demo__dl dd {
+    color: #404040;
+  }
+}

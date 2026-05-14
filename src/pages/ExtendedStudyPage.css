@@ -1,17 +1,19 @@
 .extended-study {
-  max-width: 720px;
+  max-width: var(--page-content-max);
+  width: 100%;
   margin: 0 auto;
   padding: var(--page-gutter-t) var(--page-gutter-x) var(--page-gutter-b);
   text-align: left;
+  box-sizing: border-box;
 }
 
 .extended-study__header {
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
 }
 
 .extended-study__title {
   margin: 0 0 var(--page-hero-title-gap);
-  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
   color: var(--text-h);
 }
 
@@ -61,18 +63,18 @@
 }
 
 .extended-study__section--concepts {
-  background: var(--social-bg);
+  background: var(--surface-soft);
   padding: 1.25rem 1rem;
-  border-radius: 12px;
-  border: 1px solid var(--border);
+  border-radius: var(--ui-radius-lg);
+  border: 1px solid var(--divider-line);
   margin-bottom: 2rem;
 }
 
 .extended-study__details {
   margin-bottom: 0.5rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg);
+  border: 1px solid var(--divider-line);
+  border-radius: var(--ui-radius-sm);
+  background: var(--surface);
   overflow: hidden;
 }
 

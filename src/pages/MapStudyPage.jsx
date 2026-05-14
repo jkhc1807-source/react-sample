@@ -12,6 +12,22 @@ import {
   MAP_SNIPPET_9,
   MAP_SNIPPET_10,
 } from './snippets/mapStudySnippets.js'
+import './snippets/paste/ScoreChipsDemo.css'
+import './snippets/paste/TagsStateDemo.css'
+import './snippets/paste/DoubledJoinDemo.css'
+import './snippets/paste/NumberListDemo.css'
+import './snippets/paste/ProductTableDemo.css'
+import './snippets/paste/PassListDemo.css'
+import './snippets/paste/GlossaryFragmentDemo.css'
+import './snippets/paste/NestedGridDemo.css'
+import scoreChipsDemoCss from './snippets/paste/ScoreChipsDemo.css?raw'
+import tagsStateDemoCss from './snippets/paste/TagsStateDemo.css?raw'
+import doubledJoinDemoCss from './snippets/paste/DoubledJoinDemo.css?raw'
+import numberListDemoCss from './snippets/paste/NumberListDemo.css?raw'
+import productTableDemoCss from './snippets/paste/ProductTableDemo.css?raw'
+import passListDemoCss from './snippets/paste/PassListDemo.css?raw'
+import glossaryFragmentDemoCss from './snippets/paste/GlossaryFragmentDemo.css?raw'
+import nestedGridDemoCss from './snippets/paste/NestedGridDemo.css?raw'
 import './MapStudyPage.css'
 
 const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -66,8 +82,13 @@ export default function MapStudyPage() {
           fileHint="src/components/NumberListDemo.jsx"
           code={MAP_SNIPPET_1}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/NumberListDemo.css"
+          code={numberListDemoCss.trim()}
+        />
         <p className="map-study__label">화면 (10개 모두)</p>
-        <ul className="map-study__demo-list map-study__demo-list--cols">
+        <ul className="number-list-demo__list">
           {nums.map((n) => (
             <li key={n}>{n}</li>
           ))}
@@ -82,8 +103,13 @@ export default function MapStudyPage() {
           fileHint="src/components/ProductTableDemo.jsx"
           code={MAP_SNIPPET_2}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/ProductTableDemo.css"
+          code={productTableDemoCss.trim()}
+        />
         <p className="map-study__label">화면 (행 3개 모두)</p>
-        <table className="map-study__table">
+        <table className="product-table-demo">
           <thead>
             <tr>
               <th>id</th>
@@ -114,10 +140,15 @@ export default function MapStudyPage() {
           fileHint="src/components/ScoreChipsDemo.jsx"
           code={MAP_SNIPPET_3}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/ScoreChipsDemo.css"
+          code={scoreChipsDemoCss.trim()}
+        />
         <p className="map-study__label">화면 (칩 5개 모두)</p>
-        <div className="map-study__chips">
+        <div className="score-chips-demo__row">
           {scores.map((score, index) => (
-            <span className="map-study__chip" key={index}>
+            <span className="score-chips-demo__chip" key={index}>
               #{index + 1}: {score}점
             </span>
           ))}
@@ -132,8 +163,13 @@ export default function MapStudyPage() {
           fileHint="src/components/PassListDemo.jsx"
           code={MAP_SNIPPET_4}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/PassListDemo.css"
+          code={passListDemoCss.trim()}
+        />
         <p className="map-study__label">화면 (합격 점수만, 전부 표시)</p>
-        <ul className="map-study__demo-list">
+        <ul className="pass-list-demo__list">
           {scores
             .filter((s) => s >= 70)
             .map((s) => (
@@ -150,10 +186,15 @@ export default function MapStudyPage() {
           fileHint="src/components/TagsStateDemo.jsx"
           code={MAP_SNIPPET_5}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/TagsStateDemo.css"
+          code={tagsStateDemoCss.trim()}
+        />
         <p className="map-study__label">화면</p>
-        <div className="map-study__tags">
+        <div className="tags-state-demo__tags">
           {tags.map((tag, i) => (
-            <span className="map-study__tag" key={`${tag}-${i}`}>
+            <span className="tags-state-demo__tag" key={`${tag}-${i}`}>
               {tag}
             </span>
           ))}
@@ -178,8 +219,13 @@ export default function MapStudyPage() {
           fileHint="src/components/DoubledJoinDemo.jsx"
           code={MAP_SNIPPET_6}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/DoubledJoinDemo.css"
+          code={doubledJoinDemoCss.trim()}
+        />
         <p className="map-study__label">화면</p>
-        <p className="map-study__plain">{nums.map((n) => n * 2).join(' → ')}</p>
+        <p className="doubled-join-demo__join">{nums.map((n) => n * 2).join(' → ')}</p>
       </section>
 
       <section className="map-study__section">
@@ -193,8 +239,13 @@ export default function MapStudyPage() {
           fileHint="src/components/GlossaryFragmentDemo.jsx"
           code={MAP_SNIPPET_7}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/GlossaryFragmentDemo.css"
+          code={glossaryFragmentDemoCss.trim()}
+        />
         <p className="map-study__label">화면</p>
-        <dl className="map-study__dl">
+        <dl className="glossary-fragment-demo__dl">
           {glossary.map((row) => (
             <Fragment key={row.id}>
               <dt>{row.term}</dt>
@@ -216,8 +267,13 @@ export default function MapStudyPage() {
           fileHint="src/components/NestedGridDemo.jsx"
           code={MAP_SNIPPET_8}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/NestedGridDemo.css"
+          code={nestedGridDemoCss.trim()}
+        />
         <p className="map-study__label">화면</p>
-        <table className="map-study__table">
+        <table className="nested-grid-demo__table">
           <tbody>
             {gridRows.map((row, ri) => (
               <tr key={ri}>
@@ -239,7 +295,7 @@ export default function MapStudyPage() {
         </p>
         <CodeSample label="예시 소스 (복붙용)" fileHint="임의 .js" code={MAP_SNIPPET_9} />
         <p className="map-study__label">화면</p>
-        <p className="map-study__plain">
+        <p className="doubled-join-demo__join">
           map 결과: {nums.map((n) => n * 2).join(' → ')}
         </p>
       </section>
@@ -261,7 +317,7 @@ export default function MapStudyPage() {
             autoComplete="off"
           />
         </label>
-        <ul className="map-study__demo-list">
+        <ul className="pass-list-demo__list">
           {filteredGlossary.map((g) => (
             <li key={g.id}>
               <strong>{g.term}</strong> — {g.desc}

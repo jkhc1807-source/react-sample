@@ -8,12 +8,18 @@ import {
   PRACT_PROPS,
   PRACT_REF,
 } from './snippets/practicalReactSnippets.js'
+import './snippets/paste/EventBasicsDemo.css'
+import './snippets/paste/PostFetchDemo.css'
+import './snippets/paste/PropsCardDemo.css'
+import eventBasicsDemoCss from './snippets/paste/EventBasicsDemo.css?raw'
+import postFetchDemoCss from './snippets/paste/PostFetchDemo.css?raw'
+import propsCardDemoCss from './snippets/paste/PropsCardDemo.css?raw'
 import './PracticalReactPage.css'
 
-function MiniCard({ title, children }) {
+function Card({ title, children }) {
   return (
-    <article className="practical-react__card">
-      <h3>{title}</h3>
+    <article className="props-card-demo__card">
+      <h3 className="props-card-demo__title">{title}</h3>
       <div>{children}</div>
     </article>
   )
@@ -77,9 +83,14 @@ export function PracticalReactBody() {
           fileHint="src/components/EventBasicsDemo.jsx"
           code={PRACT_EVENT}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/EventBasicsDemo.css"
+          code={eventBasicsDemoCss.trim()}
+        />
         <p className="practical-react__label">화면</p>
         <div className="practical-react__demo">
-          <div className="practical-react__counter-row">
+          <div className="event-basics-demo__toolbar">
             <button type="button" className="practical-react__btn" onClick={() => setClicks((c) => c + 1)}>
               +
             </button>
@@ -164,12 +175,17 @@ export function PracticalReactBody() {
           fileHint="src/components/PostFetchDemo.jsx"
           code={PRACT_FETCH}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/PostFetchDemo.css"
+          code={postFetchDemoCss.trim()}
+        />
         <p className="practical-react__label">화면</p>
         <div className="practical-react__demo">
           <button type="button" className="practical-react__btn" onClick={loadPosts} disabled={loading}>
             {loading ? '불러오는 중…' : fetchDone && !error ? '불러오기 완료' : '글 불러오기'}
           </button>
-          {error && <p className="practical-react__err">{error}</p>}
+          {error && <p className="post-fetch-demo__error">{error}</p>}
           <ul className="practical-react__list">
             {posts.map((p) => (
               <li key={p.id}>{p.title}</li>
@@ -189,16 +205,21 @@ export function PracticalReactBody() {
           fileHint="src/components/PropsCardDemo.jsx"
           code={PRACT_PROPS}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/PropsCardDemo.css"
+          code={propsCardDemoCss.trim()}
+        />
         <p className="practical-react__label">화면</p>
-        <div className="practical-react__demo practical-react__cards">
-          <MiniCard title="공지">
-            <p style={{ margin: 0 }}>부모가 넣은 내용이 children 으로 들어갑니다.</p>
-          </MiniCard>
-          <MiniCard title="이벤트">
+        <div className="practical-react__demo props-card-demo__stack">
+          <Card title="공지">
+            <p className="props-card-demo__body-text">부모가 넣은 내용이 children 으로 들어갑니다.</p>
+          </Card>
+          <Card title="이벤트">
             <button type="button" className="practical-react__btn">
               버튼도 children 안에 둘 수 있어요
             </button>
-          </MiniCard>
+          </Card>
         </div>
       </section>
 
@@ -218,8 +239,7 @@ export function PracticalReactBody() {
           <input ref={inputRef} type="text" placeholder="여기로 포커스" />
           <button
             type="button"
-            className="practical-react__btn"
-            style={{ marginTop: '0.5rem' }}
+            className="practical-react__btn practical-react__btn--stack"
             onClick={() => inputRef.current?.focus()}
           >
             입력칸으로 포커스 이동

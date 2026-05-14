@@ -1,0 +1,47 @@
+.page-fav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  min-width: 0;
+}
+
+.page-fav__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--ui-radius-pill);
+  border: 1px solid var(--divider-line, var(--border));
+  background: var(--surface);
+  color: var(--text-h);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.page-fav__btn:hover {
+  border-color: color-mix(in srgb, var(--accent-border) 55%, var(--border));
+  background: var(--accent-bg);
+}
+
+.page-fav__btn--on {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  color: var(--accent);
+}
+
+.page-fav__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--ui-focus-ring);
+}
+
+.page-fav__icon {
+  font-size: 1rem;
+  line-height: 1;
+}

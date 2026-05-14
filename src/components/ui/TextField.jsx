@@ -11,6 +11,7 @@ export default function TextField({
   hint,
   error,
   disabled,
+  readOnly,
   required,
   autoComplete,
 }) {
@@ -27,12 +28,13 @@ export default function TextField({
       )}
       <input
         id={inputId}
-        className={`ui-field__input${error ? ' ui-field__input--error' : ''}`}
+        className={`ui-field__input${error ? ' ui-field__input--error' : ''}${readOnly ? ' ui-field__input--readonly' : ''}`}
         type={type}
         value={value}
-        onChange={onChange}
+        onChange={readOnly ? undefined : onChange}
         placeholder={placeholder}
         disabled={disabled}
+        readOnly={readOnly}
         required={required}
         autoComplete={autoComplete}
         aria-invalid={Boolean(error)}

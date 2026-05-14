@@ -2,19 +2,22 @@
 
 export const STATE_SNIPPET_1 = `// src/components/CounterDemo.jsx
 import { useState } from 'react'
+import './CounterDemo.css'
 
 export default function CounterDemo() {
   const [count, setCount] = useState(0)
 
   return (
     <section>
-      <p>count = {count}</p>
-      <button type="button" onClick={() => setCount((c) => c + 1)}>
-        +1 (함수형 업데이트)
-      </button>
-      <button type="button" onClick={() => setCount(0)}>
-        리셋
-      </button>
+      <p className="counter-demo__line">count = {count}</p>
+      <div className="counter-demo__actions">
+        <button type="button" className="counter-demo__btn" onClick={() => setCount((c) => c + 1)}>
+          +1 (함수형 업데이트)
+        </button>
+        <button type="button" className="counter-demo__btn" onClick={() => setCount(0)}>
+          리셋
+        </button>
+      </div>
     </section>
   )
 }
@@ -22,17 +25,19 @@ export default function CounterDemo() {
 
 export const STATE_SNIPPET_2 = `// src/components/UserObjectDemo.jsx
 import { useState } from 'react'
+import './CounterDemo.css'
 
 export default function UserObjectDemo() {
   const [user, setUser] = useState({ name: 'Kim', role: 'guest' })
 
   return (
     <section>
-      <p>
+      <p className="counter-demo__line">
         {user.name} / {user.role}
       </p>
       <button
         type="button"
+        className="counter-demo__btn"
         onClick={() =>
           setUser((u) => ({
             ...u,
@@ -49,18 +54,20 @@ export default function UserObjectDemo() {
 
 export const STATE_SNIPPET_3 = `// src/components/FruitListDemo.jsx
 import { useState } from 'react'
+import './FruitListDemo.css'
+import './CounterDemo.css'
 
 export default function FruitListDemo() {
   const [items, setItems] = useState(['사과', '바나나'])
 
   return (
     <section>
-      <ul>
+      <ul className="fruit-list-demo__list">
         {items.map((x, i) => (
           <li key={\`\${x}-\${i}\`}>{x}</li>
         ))}
       </ul>
-      <button type="button" onClick={() => setItems((prev) => [...prev, '오렌지'])}>
+      <button type="button" className="counter-demo__btn" onClick={() => setItems((prev) => [...prev, '오렌지'])}>
         오렌지 추가
       </button>
     </section>
@@ -70,16 +77,21 @@ export default function FruitListDemo() {
 
 export const STATE_SNIPPET_4 = `// src/components/IdListRemoveDemo.jsx
 import { useState } from 'react'
+import './IdListRemoveDemo.css'
 
 export default function IdListRemoveDemo() {
   const [ids, setIds] = useState(['a', 'b', 'c'])
 
   return (
     <section>
-      <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+      <ul className="id-list-remove-demo__list">
         {ids.map((id) => (
           <li key={id}>
-            <button type="button" onClick={() => setIds((prev) => prev.filter((x) => x !== id))}>
+            <button
+              type="button"
+              className="id-list-remove-demo__btn"
+              onClick={() => setIds((prev) => prev.filter((x) => x !== id))}
+            >
               {id} 삭제
             </button>
           </li>
@@ -93,6 +105,7 @@ export default function IdListRemoveDemo() {
 
 export const STATE_SNIPPET_5 = `// src/components/TaskToggleDemo.jsx
 import { useState } from 'react'
+import './TaskToggleDemo.css'
 
 export default function TaskToggleDemo() {
   const [tasks, setTasks] = useState([
@@ -102,11 +115,12 @@ export default function TaskToggleDemo() {
 
   return (
     <section>
-      <ul style={{ listStyle: 'none', padding: 0 }}>
+      <ul className="task-toggle-demo__list">
         {tasks.map((t) => (
-          <li key={t.id} style={{ marginBottom: '0.35rem' }}>
+          <li key={t.id} className="task-toggle-demo__item">
             <button
               type="button"
+              className={\`task-toggle-demo__toggle\${t.done ? ' task-toggle-demo__toggle--done' : ''}\`}
               onClick={() =>
                 setTasks((prev) =>
                   prev.map((x) => (x.id === t.id ? { ...x, done: !x.done } : x))
@@ -126,6 +140,7 @@ export default function TaskToggleDemo() {
 
 export const STATE_SNIPPET_6 = `// src/components/SplitAndFormDemo.jsx
 import { useState } from 'react'
+import './SplitAndFormDemo.css'
 
 export default function SplitAndFormDemo() {
   const [name, setName] = useState('')
@@ -134,7 +149,7 @@ export default function SplitAndFormDemo() {
 
   return (
     <div>
-      <section style={{ marginBottom: '1.5rem' }}>
+      <section className="split-and-form-demo__section">
         <h3>별도 state (서로 독립)</h3>
         <label>
           name
@@ -178,7 +193,9 @@ export default function SplitAndFormDemo() {
 }
 `
 
-export const STATE_SNIPPET_7 = `import { useState } from 'react'
+export const STATE_SNIPPET_7 = `// src/components/LazyInitDemo.jsx
+import { useState } from 'react'
+import './CounterDemo.css'
 
 // 초기값 계산이 무거우면 함수로 넘겨 "첫 렌더 때 한 번만" 실행됩니다
 function readCount() {
@@ -188,17 +205,23 @@ function readCount() {
 
 export default function LazyInitDemo() {
   const [count, setCount] = useState(() => readCount())
-  return <button type="button" onClick={() => setCount((c) => c + 1)}>{count}</button>
+  return (
+    <button type="button" className="counter-demo__btn" onClick={() => setCount((c) => c + 1)}>
+      {count}
+    </button>
+  )
 }
 `
 
-export const STATE_SNIPPET_8 = `import { useState } from 'react'
+export const STATE_SNIPPET_8 = `// src/components/ToggleDemo.jsx
+import { useState } from 'react'
+import './CounterDemo.css'
 
 // 같은 값을 토글할 때도 함수형 업데이트가 안전합니다
 export default function ToggleDemo() {
   const [open, setOpen] = useState(false)
   return (
-    <button type="button" onClick={() => setOpen((v) => !v)}>
+    <button type="button" className="counter-demo__btn" onClick={() => setOpen((v) => !v)}>
       {open ? '닫기' : '열기'}
     </button>
   )

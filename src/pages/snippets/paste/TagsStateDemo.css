@@ -1,0 +1,19 @@
+.tags-state-demo__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.tags-state-demo__tag {
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .tags-state-demo__tag {
+    background: #ebebeb;
+  }
+}

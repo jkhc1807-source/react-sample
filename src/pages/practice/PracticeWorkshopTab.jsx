@@ -9,7 +9,7 @@ export default function PracticeWorkshopTab() {
   return (
     <div className="extended-study">
       <section className="extended-study__section">
-        <h2 className="extended-study__title" style={{ fontSize: '1.2rem' }}>
+        <h2 className="extended-study__title pr-tab__title-tight">
           폼 검증 한 사이클
         </h2>
         <p>제출·검증·초기화까지 controlled 패턴입니다.</p>
@@ -19,7 +19,7 @@ export default function PracticeWorkshopTab() {
       </section>
 
       <section className="extended-study__section">
-        <h2 className="extended-study__title" style={{ fontSize: '1.2rem' }}>
+        <h2 className="extended-study__title pr-tab__title-tight">
           목록 key·불변 업데이트
         </h2>
         <p>
@@ -32,7 +32,7 @@ export default function PracticeWorkshopTab() {
       </section>
 
       <section className="extended-study__section">
-        <h2 className="extended-study__title" style={{ fontSize: '1.2rem' }}>
+        <h2 className="extended-study__title pr-tab__title-tight">
           주문 큐 (상태 전이 + filter + reduce 집계)
         </h2>
         <p>배송 단계 버튼으로 상태를 올리고, 상단 칩으로 목록을 걸러 봅니다. 집계는 reduce 패턴입니다.</p>

@@ -1,7 +1,9 @@
 .fn-layout {
-  max-width: min(1126px, 100%);
+  max-width: var(--page-content-max);
+  width: 100%;
   margin: 0 auto;
   padding: 0 0 2rem;
+  box-sizing: border-box;
 }
 
 .fn-layout__head {
@@ -32,8 +34,8 @@
 
 .fn-layout__tabs {
   position: sticky;
-  top: 0;
-  z-index: 2;
+  top: var(--app-subnav-sticky-top);
+  z-index: 45;
   background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--divider-line);
@@ -73,6 +75,10 @@
   background: var(--accent-bg);
   border-color: var(--accent-border);
   color: var(--accent);
+}
+
+.fn-layout__body {
+  padding: 0;
 }
 
 @media (prefers-color-scheme: dark) {

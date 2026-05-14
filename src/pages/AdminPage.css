@@ -1,7 +1,9 @@
 .admin-page {
-  max-width: 720px;
+  max-width: var(--page-content-max);
+  width: 100%;
   margin: 0 auto;
   padding: var(--space-3) var(--page-gutter-x) var(--page-gutter-b);
+  box-sizing: border-box;
 }
 
 .admin-page__head {

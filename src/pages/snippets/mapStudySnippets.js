@@ -1,7 +1,7 @@
 /** map 학습 페이지 — 복붙용 전체 예제 (파일 하나로 저장해 import 하면 됩니다) */
 
 export const MAP_SNIPPET_1 = `// src/components/NumberListDemo.jsx
-import './NumberListDemo.css' /* 없으면 이 줄 삭제 */
+import './NumberListDemo.css'
 
 const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -9,7 +9,7 @@ export default function NumberListDemo() {
   return (
     <section className="number-list-demo">
       <h2>숫자 배열 → 리스트</h2>
-      <ul>
+      <ul className="number-list-demo__list">
         {nums.map((n) => (
           <li key={n}>{n}</li>
         ))}
@@ -20,6 +20,8 @@ export default function NumberListDemo() {
 `
 
 export const MAP_SNIPPET_2 = `// src/components/ProductTableDemo.jsx
+import './ProductTableDemo.css'
+
 const products = [
   { id: 'p1', name: '노트북', price: 1200000 },
   { id: 'p2', name: '마우스', price: 35000 },
@@ -30,7 +32,7 @@ export default function ProductTableDemo() {
   return (
     <section>
       <h2>객체 배열 → 표</h2>
-      <table>
+      <table className="product-table-demo">
         <thead>
           <tr>
             <th>id</th>
@@ -54,15 +56,17 @@ export default function ProductTableDemo() {
 `
 
 export const MAP_SNIPPET_3 = `// src/components/ScoreChipsDemo.jsx
+import './ScoreChipsDemo.css'
+
 const scores = [72, 55, 88, 91, 60]
 
 export default function ScoreChipsDemo() {
   return (
     <section>
       <h2>map 두 번째 인자: index</h2>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+      <div className="score-chips-demo__row">
         {scores.map((score, index) => (
-          <span key={index} style={{ padding: '0.35rem 0.65rem', borderRadius: '999px' }}>
+          <span key={index} className="score-chips-demo__chip">
             #{index + 1}: {score}점
           </span>
         ))}
@@ -73,13 +77,15 @@ export default function ScoreChipsDemo() {
 `
 
 export const MAP_SNIPPET_4 = `// src/components/PassListDemo.jsx
+import './PassListDemo.css'
+
 const scores = [72, 55, 88, 91, 60]
 
 export default function PassListDemo() {
   return (
     <section>
       <h2>filter 후 map</h2>
-      <ul>
+      <ul className="pass-list-demo__list">
         {scores
           .filter((s) => s >= 70)
           .map((s) => (
@@ -93,6 +99,7 @@ export default function PassListDemo() {
 
 export const MAP_SNIPPET_5 = `// src/components/TagsStateDemo.jsx
 import { useState } from 'react'
+import './TagsStateDemo.css'
 
 export default function TagsStateDemo() {
   const [tags, setTags] = useState(['React', 'map', '배열'])
@@ -100,9 +107,9 @@ export default function TagsStateDemo() {
   return (
     <section>
       <h2>state 배열 + map</h2>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
+      <div className="tags-state-demo__tags">
         {tags.map((tag, i) => (
-          <span key={\`\${tag}-\${i}\`} style={{ padding: '0.25rem 0.6rem', borderRadius: '6px' }}>
+          <span key={\`\${tag}-\${i}\`} className="tags-state-demo__tag">
             {tag}
           </span>
         ))}
@@ -121,6 +128,8 @@ export default function TagsStateDemo() {
 `
 
 export const MAP_SNIPPET_6 = `// src/components/DoubledJoinDemo.jsx
+import './DoubledJoinDemo.css'
+
 const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 export default function DoubledJoinDemo() {
@@ -129,7 +138,7 @@ export default function DoubledJoinDemo() {
   return (
     <section>
       <h2>JSX가 아닌 map (join)</h2>
-      <p style={{ fontFamily: 'monospace', lineHeight: 1.6 }}>{doubled.join(' → ')}</p>
+      <p className="doubled-join-demo__join">{doubled.join(' → ')}</p>
     </section>
   )
 }
@@ -137,6 +146,7 @@ export default function DoubledJoinDemo() {
 
 export const MAP_SNIPPET_7 = `// src/components/GlossaryFragmentDemo.jsx
 import { Fragment } from 'react'
+import './GlossaryFragmentDemo.css'
 
 const glossary = [
   { id: 'g1', term: 'props', desc: '부모 → 자식으로 넘기는 데이터' },
@@ -148,7 +158,7 @@ export default function GlossaryFragmentDemo() {
   return (
     <section>
       <h2>Fragment + key</h2>
-      <dl>
+      <dl className="glossary-fragment-demo__dl">
         {glossary.map((row) => (
           <Fragment key={row.id}>
             <dt>{row.term}</dt>
@@ -162,6 +172,8 @@ export default function GlossaryFragmentDemo() {
 `
 
 export const MAP_SNIPPET_8 = `// src/components/NestedGridDemo.jsx
+import './NestedGridDemo.css'
+
 const gridRows = [
   ['1', '2', '3'],
   ['4', '5', '6'],
@@ -172,7 +184,7 @@ export default function NestedGridDemo() {
   return (
     <section>
       <h2>중첩 map</h2>
-      <table>
+      <table className="nested-grid-demo__table">
         <tbody>
           {gridRows.map((row, ri) => (
             <tr key={ri}>

@@ -1,0 +1,27 @@
+.nested-grid-demo__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.nested-grid-demo__table th,
+.nested-grid-demo__table td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: left;
+}
+
+.nested-grid-demo__table th {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+@media (prefers-color-scheme: light) {
+  .nested-grid-demo__table th,
+  .nested-grid-demo__table td {
+    border-color: #d4d4d4;
+  }
+
+  .nested-grid-demo__table th {
+    background: #ececec;
+  }
+}

@@ -1,0 +1,42 @@
+.task-toggle-demo__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem;
+}
+
+.task-toggle-demo__item {
+  margin-bottom: 0.35rem;
+}
+
+.task-toggle-demo__toggle {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.task-toggle-demo__toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.task-toggle-demo__toggle--done {
+  opacity: 0.75;
+  text-decoration: line-through;
+}
+
+@media (prefers-color-scheme: light) {
+  .task-toggle-demo__toggle {
+    border-color: #d4d4d8;
+    background: #fff;
+  }
+
+  .task-toggle-demo__toggle:hover {
+    background: #f4f4f5;
+  }
+}

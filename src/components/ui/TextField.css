@@ -56,6 +56,18 @@
   cursor: not-allowed;
 }
 
+.ui-field__input--readonly,
+.ui-field__input:read-only {
+  cursor: default;
+  background: color-mix(in srgb, var(--surface-soft) 72%, var(--ui-control-bg));
+  color: var(--text-h);
+}
+
+.ui-field__input--readonly:hover:not(:disabled),
+.ui-field__input:read-only:hover:not(:disabled) {
+  border-color: var(--ui-control-border);
+}
+
 .ui-field__input--error {
   border-color: var(--ui-danger);
 }

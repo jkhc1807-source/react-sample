@@ -2,6 +2,7 @@
 
 export const PRACT_EVENT = `// src/components/EventBasicsDemo.jsx
 import { useState } from 'react'
+import './EventBasicsDemo.css'
 
 export default function EventBasicsDemo() {
   const [clicks, setClicks] = useState(0)
@@ -14,7 +15,7 @@ export default function EventBasicsDemo() {
 
   return (
     <section>
-      <p style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+      <p className="event-basics-demo__toolbar">
         <button type="button" onClick={() => setClicks((c) => c + 1)}>
           +
         </button>
@@ -93,6 +94,7 @@ export default function TimerEffectDemo() {
 
 export const PRACT_FETCH = `// src/components/PostFetchDemo.jsx
 import { useState } from 'react'
+import './PostFetchDemo.css'
 
 export default function PostFetchDemo() {
   const [loading, setLoading] = useState(false)
@@ -124,7 +126,7 @@ export default function PostFetchDemo() {
       <button type="button" onClick={loadPosts} disabled={loading}>
         {loading ? '불러오는 중…' : fetchDone && !error ? '불러오기 완료' : '글 불러오기'}
       </button>
-      {error && <p style={{ color: 'tomato' }}>{error}</p>}
+      {error && <p className="post-fetch-demo__error">{error}</p>}
       <ul>
         {posts.map((p) => (
           <li key={p.id}>{p.title}</li>
@@ -136,17 +138,12 @@ export default function PostFetchDemo() {
 `
 
 export const PRACT_PROPS = `// src/components/PropsCardDemo.jsx
+import './PropsCardDemo.css'
+
 function Card({ title, children }) {
   return (
-    <article
-      style={{
-        border: '1px solid #ccc',
-        borderRadius: 8,
-        padding: 12,
-        maxWidth: 320,
-      }}
-    >
-      <h3 style={{ margin: '0 0 8px' }}>{title}</h3>
+    <article className="props-card-demo__card">
+      <h3 className="props-card-demo__title">{title}</h3>
       <div>{children}</div>
     </article>
   )
@@ -154,9 +151,9 @@ function Card({ title, children }) {
 
 export default function PropsCardDemo() {
   return (
-    <section style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+    <section className="props-card-demo__stack">
       <Card title="공지">
-        <p style={{ margin: 0 }}>부모가 넣은 내용이 children 으로 들어갑니다.</p>
+        <p className="props-card-demo__body-text">부모가 넣은 내용이 children 으로 들어갑니다.</p>
       </Card>
       <Card title="이벤트">
         <button type="button">버튼도 children 안에 둘 수 있어요</button>

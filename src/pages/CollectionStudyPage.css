@@ -1,17 +1,19 @@
 .collection-study {
-  max-width: 720px;
+  max-width: var(--page-content-max);
+  width: 100%;
   margin: 0 auto;
   padding: var(--page-gutter-t) var(--page-gutter-x) var(--page-gutter-b);
   text-align: left;
+  box-sizing: border-box;
 }
 
 .collection-study__header {
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
 }
 
 .collection-study__title {
   margin: 0 0 var(--page-hero-title-gap);
-  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
   color: var(--text-h);
 }
 

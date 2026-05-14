@@ -1,0 +1,11 @@
+.post-fetch-demo__error {
+  color: tomato;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+@media (prefers-color-scheme: light) {
+  .post-fetch-demo__error {
+    color: #b91c1c;
+  }
+}

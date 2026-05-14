@@ -7,7 +7,7 @@ export default function PracticeDataTab() {
   return (
     <div className="extended-study">
       <section className="extended-study__section">
-        <h2 className="extended-study__title" style={{ fontSize: '1.2rem' }}>
+        <h2 className="extended-study__title pr-tab__title-tight">
           게시글 탐색 패널 (디바운스·중단·필터)
         </h2>
         <p>

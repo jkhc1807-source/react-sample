@@ -13,7 +13,7 @@ export default function PracticeQualityTab() {
   return (
     <div className="extended-study">
       <section className="extended-study__section">
-        <h2 className="extended-study__title" style={{ fontSize: '1.2rem' }}>
+        <h2 className="extended-study__title pr-tab__title-tight">
           에러 경계
         </h2>
         <CodeSample label="예시 소스 (복붙용)" fileHint="ErrorBoundary.jsx" code={EXT_ERROR} />
@@ -34,7 +34,7 @@ export default function PracticeQualityTab() {
       </section>
 
       <section className="extended-study__section">
-        <h2 className="extended-study__title" style={{ fontSize: '1.2rem' }}>
+        <h2 className="extended-study__title pr-tab__title-tight">
           커스텀 훅
         </h2>
         <CodeSample label="예시 소스 (복붙용)" fileHint="useToggle.js" code={EXT_HOOK} />
@@ -43,7 +43,7 @@ export default function PracticeQualityTab() {
       </section>
 
       <section className="extended-study__section">
-        <h2 className="extended-study__title" style={{ fontSize: '1.2rem' }}>
+        <h2 className="extended-study__title pr-tab__title-tight">
           접근성 (fieldset·useId)
         </h2>
         <CodeSample label="예시 소스 (복붙용)" fileHint="A11yFieldsetDemo.jsx" code={EXT_A11Y} />

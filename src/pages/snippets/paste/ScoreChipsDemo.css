@@ -1,0 +1,13 @@
+.score-chips-demo__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.score-chips-demo__chip {
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  font-size: 0.85rem;
+}

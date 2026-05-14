@@ -1,0 +1,27 @@
+.product-table-demo {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.product-table-demo th,
+.product-table-demo td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: left;
+}
+
+.product-table-demo th {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+@media (prefers-color-scheme: light) {
+  .product-table-demo th,
+  .product-table-demo td {
+    border-color: #d4d4d4;
+  }
+
+  .product-table-demo th {
+    background: #ececec;
+  }
+}

@@ -1,0 +1,23 @@
+.props-card-demo__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.props-card-demo__card {
+  border: 1px solid var(--ui-panel-border, #ccc);
+  border-radius: 8px;
+  padding: 12px;
+  max-width: 320px;
+  background: var(--surface, transparent);
+}
+
+.props-card-demo__title {
+  margin: 0 0 8px;
+  color: var(--text-h, inherit);
+}
+
+.props-card-demo__body-text {
+  margin: 0;
+  color: var(--text, inherit);
+}

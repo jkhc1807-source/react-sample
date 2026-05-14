@@ -10,6 +10,16 @@ import {
   STATE_SNIPPET_7,
   STATE_SNIPPET_8,
 } from './snippets/stateStudySnippets.js'
+import './snippets/paste/IdListRemoveDemo.css'
+import './snippets/paste/TaskToggleDemo.css'
+import './snippets/paste/SplitAndFormDemo.css'
+import './snippets/paste/CounterDemo.css'
+import './snippets/paste/FruitListDemo.css'
+import idListRemoveDemoCss from './snippets/paste/IdListRemoveDemo.css?raw'
+import taskToggleDemoCss from './snippets/paste/TaskToggleDemo.css?raw'
+import splitAndFormDemoCss from './snippets/paste/SplitAndFormDemo.css?raw'
+import counterDemoCss from './snippets/paste/CounterDemo.css?raw'
+import fruitListDemoCss from './snippets/paste/FruitListDemo.css?raw'
 import './StateStudyPage.css'
 
 export default function StateStudyPage() {
@@ -26,6 +36,8 @@ export default function StateStudyPage() {
   const [form, setForm] = useState({ title: '', body: '' })
   const [lazyCount, setLazyCount] = useState(() => Number(sessionStorage.getItem('fnStateLazy') || 0))
   const [panelOpen, setPanelOpen] = useState(false)
+
+  const fruitListPasteStyles = `${fruitListDemoCss.trim()}\n\n/* --- src/components/CounterDemo.css (버튼) --- */\n${counterDemoCss.trim()}`
 
   return (
     <div className="state-study">
@@ -50,11 +62,21 @@ export default function StateStudyPage() {
           fileHint="src/components/CounterDemo.jsx"
           code={STATE_SNIPPET_1}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/CounterDemo.css"
+          code={counterDemoCss.trim()}
+        />
         <p className="state-study__label">화면</p>
-        <p className="state-study__mono">count = {count}</p>
-        <button type="button" className="state-study__btn" onClick={() => setCount((c) => c + 1)}>
-          +1
-        </button>
+        <p className="counter-demo__line">count = {count}</p>
+        <div className="counter-demo__actions">
+          <button type="button" className="counter-demo__btn" onClick={() => setCount((c) => c + 1)}>
+            +1
+          </button>
+          <button type="button" className="counter-demo__btn" onClick={() => setCount(0)}>
+            리셋
+          </button>
+        </div>
       </section>
 
       <section className="state-study__section">
@@ -68,13 +90,18 @@ export default function StateStudyPage() {
           fileHint="src/components/UserObjectDemo.jsx"
           code={STATE_SNIPPET_2}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/CounterDemo.css"
+          code={counterDemoCss.trim()}
+        />
         <p className="state-study__label">화면</p>
-        <p className="state-study__mono">
+        <p className="counter-demo__line">
           {user.name} / {user.role}
         </p>
         <button
           type="button"
-          className="state-study__btn"
+          className="counter-demo__btn"
           onClick={() => setUser((u) => ({ ...u, name: u.name === 'Kim' ? 'Lee' : 'Kim' }))}
         >
           이름 Kim ↔ Lee
@@ -92,13 +119,18 @@ export default function StateStudyPage() {
           fileHint="src/components/FruitListDemo.jsx"
           code={STATE_SNIPPET_3}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/FruitListDemo.css · CounterDemo.css"
+          code={fruitListPasteStyles}
+        />
         <p className="state-study__label">화면</p>
-        <ul className="state-study__list">
+        <ul className="fruit-list-demo__list">
           {items.map((x, i) => (
             <li key={`${x}-${i}`}>{x}</li>
           ))}
         </ul>
-        <button type="button" className="state-study__btn" onClick={() => setItems((prev) => [...prev, '오렌지'])}>
+        <button type="button" className="counter-demo__btn" onClick={() => setItems((prev) => [...prev, '오렌지'])}>
           오렌지 추가
         </button>
       </section>
@@ -113,11 +145,20 @@ export default function StateStudyPage() {
           fileHint="src/components/IdListRemoveDemo.jsx"
           code={STATE_SNIPPET_4}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/IdListRemoveDemo.css"
+          code={idListRemoveDemoCss.trim()}
+        />
         <p className="state-study__label">화면 (항목 클릭 시 삭제)</p>
-        <ul className="state-study__list state-study__list--inline">
+        <ul className="id-list-remove-demo__list">
           {ids.map((id) => (
             <li key={id}>
-              <button type="button" className="state-study__btn state-study__btn--small" onClick={() => setIds((prev) => prev.filter((x) => x !== id))}>
+              <button
+                type="button"
+                className="id-list-remove-demo__btn"
+                onClick={() => setIds((prev) => prev.filter((x) => x !== id))}
+              >
                 {id} 삭제
               </button>
             </li>
@@ -136,13 +177,18 @@ export default function StateStudyPage() {
           fileHint="src/components/TaskToggleDemo.jsx"
           code={STATE_SNIPPET_5}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/TaskToggleDemo.css"
+          code={taskToggleDemoCss.trim()}
+        />
         <p className="state-study__label">화면 (행 클릭으로 완료 토글)</p>
-        <ul className="state-study__list state-study__tasks">
+        <ul className="task-toggle-demo__list">
           {tasks.map((t) => (
-            <li key={t.id}>
+            <li key={t.id} className="task-toggle-demo__item">
               <button
                 type="button"
-                className={`state-study__task ${t.done ? 'state-study__task--done' : ''}`}
+                className={`task-toggle-demo__toggle${t.done ? ' task-toggle-demo__toggle--done' : ''}`}
                 onClick={() =>
                   setTasks((prev) =>
                     prev.map((x) => (x.id === t.id ? { ...x, done: !x.done } : x))
@@ -170,8 +216,13 @@ export default function StateStudyPage() {
           fileHint="src/components/SplitAndFormDemo.jsx"
           code={STATE_SNIPPET_6}
         />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/SplitAndFormDemo.css"
+          code={splitAndFormDemoCss.trim()}
+        />
         <p className="state-study__label">화면</p>
-        <div className="state-study__form-block">
+        <div className="state-study__form-block split-and-form-demo__section">
           <label className="state-study__field">
             name (별도 state)
             <input value={name} onChange={(e) => setName(e.target.value)} placeholder="입력" />
@@ -218,11 +269,16 @@ export default function StateStudyPage() {
           아래 숫자는 세션 스토리지에 저장됩니다(탭 단위).
         </p>
         <CodeSample label="예시 소스 (복붙용)" fileHint="임의 컴포넌트" code={STATE_SNIPPET_7} />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/CounterDemo.css"
+          code={counterDemoCss.trim()}
+        />
         <p className="state-study__label">화면</p>
-        <p className="state-study__mono">lazyCount = {lazyCount}</p>
+        <p className="counter-demo__line">lazyCount = {lazyCount}</p>
         <button
           type="button"
-          className="state-study__btn"
+          className="counter-demo__btn"
           onClick={() =>
             setLazyCount((c) => {
               const n = c + 1
@@ -239,8 +295,13 @@ export default function StateStudyPage() {
         <h2>8. 불리언 토글 — 함수형 업데이트</h2>
         <p>열림/닫힘처럼 이전 값의 반대로만 바꿀 때는 <code>setOpen((v) =&gt; !v)</code> 형태가 안전합니다.</p>
         <CodeSample label="예시 소스 (복붙용)" fileHint="임의 컴포넌트" code={STATE_SNIPPET_8} />
+        <CodeSample
+          label="예시 스타일 (복붙용)"
+          fileHint="src/components/CounterDemo.css"
+          code={counterDemoCss.trim()}
+        />
         <p className="state-study__label">화면</p>
-        <button type="button" className="state-study__btn" onClick={() => setPanelOpen((v) => !v)}>
+        <button type="button" className="counter-demo__btn" onClick={() => setPanelOpen((v) => !v)}>
           패널 {panelOpen ? '닫기' : '열기'}
         </button>
         {panelOpen ? <p className="state-study__hint state-study__hint--stack">열린 상태입니다. 다시 누르면 닫힙니다.</p> : null}

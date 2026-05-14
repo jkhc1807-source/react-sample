@@ -1,0 +1,62 @@
+.ui-surface-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: var(--ui-radius);
+  border: 1px solid var(--divider-line);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  text-align: left;
+}
+
+.ui-surface-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem 0.65rem;
+  border-bottom: 1px solid var(--divider-line);
+  background: color-mix(in srgb, var(--surface-soft) 55%, var(--surface));
+}
+
+.ui-surface-card__titles {
+  min-width: 0;
+}
+
+.ui-surface-card__title {
+  margin: 0 0 0.2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-h);
+  line-height: 1.3;
+}
+
+.ui-surface-card__subtitle {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.ui-surface-card__meta {
+  flex-shrink: 0;
+}
+
+.ui-surface-card__body {
+  padding: 0.85rem 1rem 1rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text);
+  flex: 1;
+}
+
+.ui-surface-card__footer {
+  margin-top: auto;
+  padding: 0.65rem 1rem;
+  border-top: 1px solid var(--divider-line);
+  font-size: 0.78rem;
+  color: var(--text-muted, var(--text));
+  background: color-mix(in srgb, var(--surface-soft) 40%, var(--surface));
+}
