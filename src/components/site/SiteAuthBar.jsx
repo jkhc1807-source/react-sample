@@ -100,7 +100,7 @@ export default function SiteAuthBar() {
             aria-expanded={menuOpen}
             aria-controls="site-auth-account-panel"
             id="site-auth-account-trigger"
-            title={isHome ? `${user.email} — 계정` : `${user.email} — 계정·즐겨찾기`}
+            title={`${user.email} — 계정·즐겨찾기`}
             onClick={() => setMenuOpen((v) => !v)}
           >
             <span className="site-auth__avatar-letter" aria-hidden>
@@ -108,20 +108,16 @@ export default function SiteAuthBar() {
             </span>
             <span className="visually-hidden">
               {menuOpen
-                ? isHome
-                  ? '계정 메뉴 닫기'
-                  : '계정·즐겨찾기 메뉴 닫기'
-                : isHome
-                  ? '계정 메뉴 열기'
-                  : '계정·즐겨찾기 메뉴 열기'}
+                ? '계정·즐겨찾기 메뉴 닫기'
+                : '계정·즐겨찾기 메뉴 열기'}
             </span>
           </button>
 
           <div
             id="site-auth-account-panel"
-            className={`site-auth__panel${isHome ? '' : ' site-auth__panel--wide'}`}
+            className="site-auth__panel site-auth__panel--wide"
             role="region"
-            aria-label={isHome ? '계정' : '계정 및 즐겨찾기'}
+            aria-label="계정 및 즐겨찾기"
             inert={!menuOpen}
           >
             <div className="site-auth__panel-inner">
@@ -130,16 +126,12 @@ export default function SiteAuthBar() {
                 역할: <strong>{isAdmin ? '관리자' : '회원'}</strong>
               </p>
 
-              {!isHome && (
-                <>
-                  <div className="site-auth__divider" />
+              <div className="site-auth__divider" />
 
-                  <p className="site-auth__fav-heading">즐겨찾기</p>
-                  <div className="site-auth__fav-scroll">
-                    <FavoritesList favorites={favorites} toggleFavorite={toggleFavorite} />
-                  </div>
-                </>
-              )}
+              <p className="site-auth__fav-heading">즐겨찾기</p>
+              <div className="site-auth__fav-scroll">
+                <FavoritesList favorites={favorites} toggleFavorite={toggleFavorite} />
+              </div>
 
               <div className="site-auth__divider" />
 
