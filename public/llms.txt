@@ -41,7 +41,7 @@ React 학습용 예제 모음(SPA). 컴포넌트·상태·배열 메서드·UI·
 - [실무·심화 — 비동기](/practice/async): fetch·effect
 - [실무·심화 — 품질](/practice/quality): 에러 경계 등
 - [UI 키트](/ui-kit): 카드·뱃지·폼·모달·토스트·샘플과 동일 패턴
-- [연장 학습 (구 경로)](/extended-study): 실무·심화 개요와 동일 — 진입 시 개요로 이동
+- [연장 학습 (구 경로)](/extended-study): 북마크·구 링크 호환 — 열리면 실무·심화 개요(/practice/overview)로 이동
 
 ## 기술 스택
 

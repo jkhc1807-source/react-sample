@@ -150,7 +150,7 @@ export const HOME_SEARCH_ROUTES = [
   {
     path: '/extended-study',
     title: '연장 학습 (구 경로)',
-    subtitle: '실무·심화 개요와 동일 — 진입 시 개요로 이동',
+    subtitle: '북마크·구 링크 호환 — 열리면 실무·심화 개요(/practice/overview)로 이동',
     keywords: ['extended', 'extended-study', '연장', '추가 학습', '구 경로'],
   },
 ]

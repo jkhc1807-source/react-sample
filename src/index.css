@@ -21,6 +21,7 @@
   --accent: #2f6feb;
   --accent-bg: color-mix(in srgb, var(--accent) 10%, var(--bg));
   --accent-border: color-mix(in srgb, var(--accent) 32%, var(--border));
+  --home-step-badge-blend: #1a4a9e;
   --social-bg: #e8ebf2;
   --shadow-sm: 0 1px 2px rgba(22, 24, 29, 0.04);
   --shadow-md: 0 4px 20px rgba(22, 24, 29, 0.06);
@@ -95,19 +96,9 @@
   }
 }
 
-html {
-  overflow-x: hidden;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
-  }
-}
-
-@supports (overflow: clip) {
-  html {
-    overflow-x: clip;
   }
 }
 
@@ -125,6 +116,7 @@ html {
     --accent: #5b9dff;
     --accent-bg: color-mix(in srgb, var(--accent) 12%, var(--bg));
     --accent-border: color-mix(in srgb, var(--accent) 28%, var(--border));
+    --home-step-badge-blend: #143a78;
     --social-bg: #1a1e28;
     --ui-on-accent: #f8fafc;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
@@ -177,6 +169,14 @@ body {
   border-inline: 1px solid color-mix(in srgb, var(--border) 92%, transparent);
   background: color-mix(in srgb, var(--surface) 86%, var(--bg));
   box-shadow: var(--shadow-sm);
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+  #root {
+    overflow-x: clip;
+  }
 }
 
 @media (max-width: 640px) {

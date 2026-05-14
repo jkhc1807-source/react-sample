@@ -5,7 +5,7 @@ const links = [
   { to: '/', label: '홈', end: true },
   { to: '/faq', label: 'FAQ' },
   { to: '/playground', label: '샘플 모음' },
-  { to: '/functions/map', label: '함수', matchPrefix: '/functions' },
+  { to: '/functions/map', label: '함수(map)', matchPrefix: '/functions' },
   { to: '/practice/overview', label: '실무·심화', matchPrefix: '/practice' },
   { to: '/ui-kit', label: 'UI 키트' },
 ]

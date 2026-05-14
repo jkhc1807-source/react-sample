@@ -5,11 +5,6 @@
   flex-shrink: 0;
 }
 
-.site-auth__loading {
-  font-size: 0.78rem;
-  color: var(--text-muted, var(--text));
-}
-
 /* —— 로그인·비로그인: 아바타 클릭 토글 패널 —— */
 
 .site-auth--session {
@@ -236,7 +231,19 @@
 
 .site-auth__fav-empty {
   margin: 0;
+}
+
+.site-auth__fav-empty-line {
+  margin: 0 0 0.35rem;
   font-size: 0.78rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.site-auth__fav-empty-hint {
+  margin: 0;
+  font-size: 0.72rem;
   line-height: 1.5;
   color: var(--text-muted, var(--text));
 }

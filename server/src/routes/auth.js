@@ -2,9 +2,10 @@ import { Router } from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { z } from 'zod'
+import { persistUsers, usersByEmail } from '../userStore.js'
 
-/** 개발용 메모리 저장소 — 프로덕션에서는 반드시 DB + 고유 인덱스(email) */
-const usersByEmail = new Map()
+/** 로그아웃 등으로 무효화한 JWT id (재시작 시 초기화) */
+const revokedJti = new Set()
 
 const registerSchema = z.object({
   email: z.string().trim().email().max(320),
@@ -33,10 +34,22 @@ function getJwtSecret() {
 }
 
 function signAccessToken(userId, email, role = 'user') {
+  const jti = crypto.randomUUID()
   return jwt.sign({ sub: userId, email, role }, getJwtSecret(), {
     algorithm: 'HS256',
     expiresIn: '15m',
+    jwtid: jti,
   })
+}
+
+function verifyAccessToken(raw) {
+  const payload = jwt.verify(raw, getJwtSecret())
+  if (payload.jti && revokedJti.has(payload.jti)) {
+    const err = new Error('token_revoked')
+    err.code = 'token_revoked'
+    throw err
+  }
+  return payload
 }
 
 function cookieOptions() {
@@ -50,10 +63,14 @@ function cookieOptions() {
   }
 }
 
-export function authRouter(strictLimiter) {
-  const r = Router()
+/** 발급 시와 동일 속성 — 브라우저가 쿠키를 확실히 지우도록 함 */
+function cookieClearOptions() {
+  const { httpOnly, secure, sameSite, path } = cookieOptions()
+  return { httpOnly, secure, sameSite, path }
+}
 
-  r.use(strictLimiter)
+export function authRouter(loginLimiter) {
+  const r = Router()
 
   r.post('/register', async (req, res) => {
     const parsed = registerSchema.safeParse(req.body)
@@ -62,19 +79,20 @@ export function authRouter(strictLimiter) {
     }
     const { email, password } = parsed.data
     const lower = email.trim().toLowerCase()
+    const hash = await bcrypt.hash(password, 12)
     if (usersByEmail.has(lower)) {
       return res.status(409).json({ error: 'email_taken' })
     }
-    const hash = await bcrypt.hash(password, 12)
     const id = crypto.randomUUID()
     const role = 'user'
     usersByEmail.set(lower, { id, email: lower, passwordHash: hash, role })
+    persistUsers()
     const token = signAccessToken(id, lower, role)
     res.cookie('access_token', token, cookieOptions())
     return res.status(201).json({ ok: true, user: { id, email: lower, role } })
   })
 
-  r.post('/login', async (req, res) => {
+  r.post('/login', loginLimiter, async (req, res) => {
     const parsed = loginSchema.safeParse(req.body)
     if (!parsed.success) {
       return res.status(400).json({ error: 'validation_error', details: parsed.error.flatten() })
@@ -82,12 +100,13 @@ export function authRouter(strictLimiter) {
     const { email, password } = parsed.data
     const lower = email.trim().toLowerCase()
 
-    // 개발용 슈퍼 관리자 계정: admin / admin
-    if (lower === 'admin' && password === 'admin') {
+    // 개발용 슈퍼 관리자: admin / admin — NODE_ENV=production 에서는 비활성(실서버 유출 방지)
+    if (process.env.NODE_ENV !== 'production' && lower === 'admin' && password === 'admin') {
       const id = 'admin'
       const role = 'admin'
       if (!usersByEmail.has(lower)) {
         usersByEmail.set(lower, { id, email: lower, passwordHash: null, role })
+        persistUsers()
       }
       const token = signAccessToken(id, lower, role)
       res.cookie('access_token', token, cookieOptions())
@@ -100,6 +119,9 @@ export function authRouter(strictLimiter) {
       await bcrypt.hash(password, 12)
       return genericFail()
     }
+    if (!user.passwordHash) {
+      return genericFail()
+    }
     const ok = await bcrypt.compare(password, user.passwordHash)
     if (!ok) return genericFail()
     const role = user.role || 'user'
@@ -108,8 +130,17 @@ export function authRouter(strictLimiter) {
     return res.json({ ok: true, user: { id: user.id, email: user.email, role } })
   })
 
-  r.post('/logout', (_req, res) => {
-    res.clearCookie('access_token', { path: '/' })
+  r.post('/logout', (req, res) => {
+    const raw = req.cookies?.access_token
+    if (raw) {
+      try {
+        const payload = jwt.verify(raw, getJwtSecret())
+        if (payload.jti) revokedJti.add(payload.jti)
+      } catch {
+        // 이미 만료·위조면 블랙리스트 생략
+      }
+    }
+    res.clearCookie('access_token', cookieClearOptions())
     res.json({ ok: true })
   })
 
@@ -117,7 +148,7 @@ export function authRouter(strictLimiter) {
     const raw = req.cookies?.access_token
     if (!raw) return res.status(401).json({ error: 'unauthorized' })
     try {
-      const payload = jwt.verify(raw, getJwtSecret())
+      const payload = verifyAccessToken(raw)
       return res.json({ user: { id: payload.sub, email: payload.email, role: payload.role || 'user' } })
     } catch {
       return res.status(401).json({ error: 'invalid_token' })
@@ -128,7 +159,7 @@ export function authRouter(strictLimiter) {
     const raw = req.cookies?.access_token
     if (!raw) return res.status(401).json({ error: 'unauthorized' })
     try {
-      const payload = jwt.verify(raw, getJwtSecret())
+      const payload = verifyAccessToken(raw)
       if (payload.role !== 'admin') {
         return res.status(403).json({ error: 'forbidden' })
       }

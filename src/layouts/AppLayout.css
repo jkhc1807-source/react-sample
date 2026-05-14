@@ -15,7 +15,7 @@
   transition: transform 0.2s ease;
 }
 
-.skip-link:focus {
+.skip-link:focus-visible {
   outline: none;
   transform: translateY(0);
   box-shadow:

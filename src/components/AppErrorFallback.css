@@ -1,0 +1,98 @@
+.app-error-fallback {
+  max-width: min(36rem, 100%);
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+  box-sizing: border-box;
+}
+
+.app-error-fallback__head {
+  margin-bottom: var(--space-5);
+}
+
+.app-error-fallback__eyebrow {
+  margin: 0 0 var(--space-2);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted, var(--text));
+}
+
+.app-error-fallback__title {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  color: var(--text-h);
+}
+
+.app-error-fallback__lead {
+  margin: 0 0 var(--space-3);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted, var(--text));
+}
+
+.app-error-fallback__detail {
+  margin: 0;
+  padding: var(--space-3);
+  border-radius: var(--ui-radius);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface-soft) 55%, var(--surface));
+  border: 1px solid var(--border);
+  overflow: auto;
+  max-height: 12rem;
+}
+
+.app-error-fallback__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.app-error-fallback__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0 var(--space-5);
+  border-radius: var(--ui-radius);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  box-sizing: border-box;
+}
+
+.app-error-fallback__btn--primary {
+  color: var(--ui-on-accent);
+  background: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.app-error-fallback__btn--primary:hover {
+  filter: brightness(1.05);
+}
+
+.app-error-fallback__btn--ghost {
+  color: var(--text-h);
+  background: color-mix(in srgb, var(--surface-soft) 40%, var(--surface));
+  border: 1px solid var(--border);
+}
+
+.app-error-fallback__btn--ghost:hover {
+  background: color-mix(in srgb, var(--surface-soft) 55%, var(--surface));
+}
+
+.app-error-fallback__btn:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 3px;
+}

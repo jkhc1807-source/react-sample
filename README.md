@@ -20,6 +20,8 @@ npm run dev
 
 (선택) **로그인 API** 실험: `server/README.md` 참고 후 `server` 폴더에서 `npm install` · `npm run dev`. Vite는 `/api`를 `localhost:3001`로 프록시합니다.
 
+배포 시에는 루트 `.env`의 `VITE_API_ORIGIN`(API 전체 URL)과 `server`의 `FRONTEND_ORIGIN`(실제 프론트 출처)이 서로 맞는지 확인하세요. 비우면 상대 `/api`(프록시·동일 출처)에 의존합니다.
+
 - 빌드: `npm run build`
 - 미리보기: `npm run preview`
 - ESLint: `npm run lint`

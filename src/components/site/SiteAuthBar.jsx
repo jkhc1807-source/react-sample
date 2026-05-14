@@ -15,7 +15,13 @@ function avatarInitial(email) {
 function FavoritesList({ favorites, toggleFavorite }) {
   if (favorites.length === 0) {
     return (
-      <p className="site-auth__fav-empty">즐겨찾기가 없습니다.</p>
+      <div className="site-auth__fav-empty">
+        <p className="site-auth__fav-empty-line">즐겨찾기가 없습니다.</p>
+        <p className="site-auth__fav-empty-hint">
+          페이지로 이동한 뒤 상단의 <strong>즐겨찾기</strong> 버튼(별)을 눌러 추가할 수 있습니다. 홈에서는 아래
+          권장·추천 링크로 들어가 보세요.
+        </p>
+      </div>
     )
   }
   return (
@@ -42,14 +48,14 @@ function FavoritesList({ favorites, toggleFavorite }) {
 
 export default function SiteAuthBar() {
   const { pathname } = useLocation()
-  const isHome = pathname === '/' || pathname === ''
   const { user, status, logout } = useAuth()
   const { favorites, toggleFavorite } = useFavorites()
   const [menuOpen, setMenuOpen] = useState(false)
   const popoverRef = useRef(null)
 
   useEffect(() => {
-    setMenuOpen(false)
+    const id = window.setTimeout(() => setMenuOpen(false), 0)
+    return () => window.clearTimeout(id)
   }, [user?.id, user?.email, pathname])
 
   useEffect(() => {
@@ -76,14 +82,6 @@ export default function SiteAuthBar() {
   }, [menuOpen])
 
   const isAdmin = user?.role === 'admin'
-
-  if (status === 'loading') {
-    return (
-      <div className="site-auth" aria-busy="true">
-        <span className="site-auth__loading">계정 확인 중…</span>
-      </div>
-    )
-  }
 
   if (user) {
     const initial = avatarInitial(user.email)
@@ -153,45 +151,47 @@ export default function SiteAuthBar() {
   }
 
   return (
-    <div className="site-auth site-auth--guest">
-      {!isHome && (
-        <div
-          ref={popoverRef}
-          className={`site-auth__popover${menuOpen ? ' site-auth__popover--open' : ''}`}
+    <div
+      className="site-auth site-auth--guest"
+      aria-busy={status === 'loading'}
+      aria-live={status === 'loading' ? 'polite' : undefined}
+    >
+      <div
+        ref={popoverRef}
+        className={`site-auth__popover${menuOpen ? ' site-auth__popover--open' : ''}`}
+      >
+        <button
+          type="button"
+          className="site-auth__avatar site-auth__avatar--bookmark"
+          aria-haspopup="true"
+          aria-expanded={menuOpen}
+          aria-controls="site-auth-guest-fav-panel"
+          id="site-auth-guest-fav-trigger"
+          title="즐겨찾기 목록"
+          onClick={() => setMenuOpen((v) => !v)}
         >
-          <button
-            type="button"
-            className="site-auth__avatar site-auth__avatar--bookmark"
-            aria-haspopup="true"
-            aria-expanded={menuOpen}
-            aria-controls="site-auth-guest-fav-panel"
-            id="site-auth-guest-fav-trigger"
-            title="즐겨찾기 목록"
-            onClick={() => setMenuOpen((v) => !v)}
-          >
-            <span className="site-auth__avatar-star" aria-hidden>
-              ★
-            </span>
-            <span className="visually-hidden">
-              {menuOpen ? '즐겨찾기 목록 닫기' : '즐겨찾기 목록 열기'}
-            </span>
-          </button>
-          <div
-            id="site-auth-guest-fav-panel"
-            className="site-auth__panel site-auth__panel--wide"
-            role="region"
-            aria-label="즐겨찾기"
-            inert={!menuOpen}
-          >
-            <div className="site-auth__panel-inner">
-              <p className="site-auth__fav-heading">즐겨찾기</p>
-              <div className="site-auth__fav-scroll">
-                <FavoritesList favorites={favorites} toggleFavorite={toggleFavorite} />
-              </div>
+          <span className="site-auth__avatar-star" aria-hidden>
+            ★
+          </span>
+          <span className="visually-hidden">
+            {menuOpen ? '즐겨찾기 목록 닫기' : '즐겨찾기 목록 열기'}
+          </span>
+        </button>
+        <div
+          id="site-auth-guest-fav-panel"
+          className="site-auth__panel site-auth__panel--wide"
+          role="region"
+          aria-label="즐겨찾기"
+          inert={!menuOpen}
+        >
+          <div className="site-auth__panel-inner">
+            <p className="site-auth__fav-heading">즐겨찾기</p>
+            <div className="site-auth__fav-scroll">
+              <FavoritesList favorites={favorites} toggleFavorite={toggleFavorite} />
             </div>
           </div>
         </div>
-      )}
+      </div>
       <Link to="/auth" className="site-auth__login">
         로그인
       </Link>

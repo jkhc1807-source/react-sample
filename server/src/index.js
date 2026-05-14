@@ -7,9 +7,19 @@ import { authRouter } from './routes/auth.js'
 
 const app = express()
 const PORT = Number(process.env.PORT) || 3001
-const frontendOrigin = process.env.FRONTEND_ORIGIN || 'http://localhost:5173'
 
-app.set('trust proxy', 1)
+function parseFrontendOrigins() {
+  const raw = process.env.FRONTEND_ORIGIN || 'http://localhost:5173'
+  return raw
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean)
+}
+
+const allowedOrigins = parseFrontendOrigins()
+
+const trustHops = process.env.TRUST_PROXY_HOPS
+app.set('trust proxy', trustHops === '0' ? false : Number(trustHops) || 1)
 
 app.use(
   helmet({
@@ -19,8 +29,16 @@ app.use(
 
 app.use(
   cors({
-    origin: frontendOrigin,
     credentials: true,
+    origin(origin, callback) {
+      if (!origin) {
+        return callback(null, false)
+      }
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, origin)
+      }
+      return callback(new Error(`CORS: origin not allowed: ${origin}`))
+    },
   }),
 )
 
@@ -34,11 +52,18 @@ const strictAuthLimiter = rateLimit({
   legacyHeaders: false,
 })
 
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 15,
+  standardHeaders: true,
+  legacyHeaders: false,
+})
+
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true })
 })
 
-app.use('/api/auth', authRouter(strictAuthLimiter))
+app.use('/api/auth', strictAuthLimiter, authRouter(loginLimiter))
 
 app.use((_req, res) => {
   res.status(404).json({ error: 'not_found' })

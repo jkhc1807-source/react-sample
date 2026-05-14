@@ -1,5 +1,5 @@
 import { useMemo, useState, useRef, useId, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { HOME_SEARCH_ROUTES, getPopularHomeRoutes } from '../../data/homeSearchRoutes.js'
 import { useFavorites } from '../../hooks/useFavorites.js'
 import './GlobalRouteSearch.css'
@@ -36,6 +36,8 @@ function routeListItem(r, idx, listId, activeIdx, setHighlightIdx, onPick, extra
 
 export default function GlobalRouteSearch() {
   const navigate = useNavigate()
+  const { pathname } = useLocation()
+  const isHome = pathname === '/' || pathname === ''
   const { favorites, toggleFavorite } = useFavorites()
   const rootRef = useRef(null)
   const inputRef = useRef(null)
@@ -45,6 +47,7 @@ export default function GlobalRouteSearch() {
 
   const inputId = useId()
   const listId = useId()
+  const searchHelpId = useId()
 
   const favoritePaths = useMemo(() => new Set(favorites.map((f) => f.path)), [favorites])
 
@@ -137,6 +140,9 @@ export default function GlobalRouteSearch() {
       <label className="gnb-search__label visually-hidden" htmlFor={inputId}>
         페이지 검색
       </label>
+      <p id={searchHelpId} className="visually-hidden">
+        방향키로 목록을 탐색하고 Enter로 이동합니다. Escape로 닫습니다.
+      </p>
       <div className="gnb-search__field">
         <span className="gnb-search__icon" aria-hidden="true">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -161,6 +167,7 @@ export default function GlobalRouteSearch() {
           aria-activedescendant={
             open && flatList[activeIdx] ? `${listId}-opt-${activeIdx}` : undefined
           }
+          aria-describedby={searchHelpId}
           role="combobox"
           onChange={(e) => {
             setQuery(e.target.value)
@@ -237,7 +244,9 @@ export default function GlobalRouteSearch() {
                 {combinedEmptyList.favorites.length === 0 &&
                 combinedEmptyList.recommended.length === 0 ? (
                   <li className="gnb-search__empty" role="status">
-                    즐겨찾기·추천이 없습니다. 페이지에서 별을 눌러 추가하세요.
+                    {isHome
+                      ? '즐겨찾기·추천이 없습니다. 아래 카드로 페이지에 들어간 뒤, 상단의 즐겨찾기 버튼(별)으로 추가할 수 있습니다.'
+                      : '즐겨찾기·추천이 없습니다. 이 페이지 상단의 즐겨찾기 버튼으로 추가할 수 있습니다.'}
                   </li>
                 ) : null}
               </>

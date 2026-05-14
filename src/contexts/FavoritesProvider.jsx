@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState, useEffect, useLayoutEffect } from 'react'
+import { useCallback, useMemo, useState, useEffect } from 'react'
 import { FavoritesContext } from './favorites-context.js'
 import { getRouteByPath } from '../data/homeSearchRoutes.js'
 
@@ -35,7 +35,7 @@ export function FavoritesProvider({ children }) {
     typeof window === 'undefined' ? [] : readStored(),
   )
 
-  // 다른 탭에서 바뀐 경우, 또는 초기화 직후 스토리지와 메모리가 어긋난 경우 동기화
+  // 다른 탭에서 localStorage가 바뀌면 반영
   useEffect(() => {
     function onStorage(e) {
       if (e.key !== STORAGE_KEY || e.storageArea !== localStorage) return
@@ -43,13 +43,6 @@ export function FavoritesProvider({ children }) {
     }
     window.addEventListener('storage', onStorage)
     return () => window.removeEventListener('storage', onStorage)
-  }, [])
-
-  // 스토리지에만 있고 state가 비어 있으면, persist effect가 []를 덮어쓰기 전에 동기화
-  useLayoutEffect(() => {
-    const disk = readStored()
-    if (disk.length === 0) return
-    setFavorites((prev) => (prev.length === 0 ? disk : prev))
   }, [])
 
   useEffect(() => {

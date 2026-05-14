@@ -6,21 +6,11 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [status, setStatus] = useState('loading')
 
-  const refresh = useCallback(async () => {
-    try {
-      const u = await authApi.fetchMe()
-      setUser(u)
-      setStatus(u ? 'user' : 'anon')
-    } catch {
-      setUser(null)
-      setStatus('anon')
-    }
-  }, [])
-
   useEffect(() => {
     let cancelled = false
+    // 개발(StrictMode)에서 부모 commit 직후 동기 setState와 겹치는 경고를 줄이기 위해 한 틱 미룸
     queueMicrotask(() => {
-      ;(async () => {
+      void (async () => {
         try {
           const u = await authApi.fetchMe()
           if (cancelled) return
@@ -62,13 +52,12 @@ export function AuthProvider({ children }) {
     () => ({
       user,
       status,
-      refresh,
       login,
       register,
       logout,
       isAuthenticated: Boolean(user),
     }),
-    [user, status, refresh, login, register, logout],
+    [user, status, login, register, logout],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

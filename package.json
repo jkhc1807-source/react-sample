@@ -8,6 +8,7 @@
     "dev:api": "npm run dev --prefix server",
     "dev:all": "concurrently -n web,api -c cyan,magenta \"npm run dev\" \"npm run dev --prefix server\"",
     "build": "vite build",
+    "typecheck": "node ./node_modules/typescript/lib/tsc.js --noEmit",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "typescript": "^5.9.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
@@ -26,6 +28,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.5.0",
-    "vite": "^8.0.10"
+    "vite": "^8.0.10",
+    "@typescript-eslint/parser": "^8.56.0"
   }
 }
