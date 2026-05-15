@@ -229,20 +229,6 @@
   color: var(--text);
 }
 
-.home__visit-nudge {
-  margin: var(--space-3) 0 0;
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--divider-line);
-  font-size: 0.88rem;
-  line-height: 1.5;
-  color: var(--text-muted);
-}
-
-.home__visit-nudge strong {
-  color: var(--text-h);
-  font-weight: 700;
-}
-
 /* ----- 이득 3칼럼 ----- */
 .home__benefits {
   margin-top: clamp(1.25rem, 3vw, 1.85rem);

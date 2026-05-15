@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { GEO_FAQ_ITEMS } from '../../data/geoFaq.js'
+import { fetchFaqItems } from '../../api/contentClient.js'
 import { getSeoForPath } from '../../data/seoMeta.js'
 import { absoluteUrl, getSiteOrigin } from '../../lib/siteUrl.js'
 
@@ -40,6 +41,8 @@ export default function DocumentMeta() {
   const { pathname } = useLocation()
 
   useEffect(() => {
+    let cancelled = false
+
     const seo = getSeoForPath(pathname)
     const origin = getSiteOrigin()
     const pageUrl = absoluteUrl(seo.path)
@@ -116,26 +119,41 @@ export default function DocumentMeta() {
       })
     }
 
-    if (seo.path === '/faq' && !seo.noindex) {
-      graph.push({
-        '@type': 'FAQPage',
-        url: pageUrl,
-        inLanguage: 'ko-KR',
-        mainEntity: GEO_FAQ_ITEMS.map(({ question, answer }) => ({
-          '@type': 'Question',
-          name: question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: answer,
-          },
-        })),
+    function applyJsonLd(faqItems) {
+      const g = [...graph]
+      if (seo.path === '/faq' && !seo.noindex) {
+        const items = faqItems?.length ? faqItems : GEO_FAQ_ITEMS
+        g.push({
+          '@type': 'FAQPage',
+          url: pageUrl,
+          inLanguage: 'ko-KR',
+          mainEntity: items.map(({ question, answer }) => ({
+            '@type': 'Question',
+            name: question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: answer,
+            },
+          })),
+        })
+      }
+      upsertJsonLd('seo-jsonld-webpage', {
+        '@context': 'https://schema.org',
+        '@graph': g,
       })
     }
 
-    upsertJsonLd('seo-jsonld-webpage', {
-      '@context': 'https://schema.org',
-      '@graph': graph,
-    })
+    if (seo.path === '/faq' && !seo.noindex) {
+      void fetchFaqItems().then((items) => {
+        if (!cancelled) applyJsonLd(items)
+      })
+    } else {
+      applyJsonLd(null)
+    }
+
+    return () => {
+      cancelled = true
+    }
   }, [pathname])
 
   return null

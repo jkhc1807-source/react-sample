@@ -4,6 +4,9 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import rateLimit from 'express-rate-limit'
 import { authRouter } from './routes/auth.js'
+import { tipsRouter } from './routes/tips.js'
+import { contentRouter } from './routes/content.js'
+import { adminRouter } from './routes/admin.js'
 
 const app = express()
 const PORT = Number(process.env.PORT) || 3001
@@ -64,6 +67,9 @@ app.get('/api/health', (_req, res) => {
 })
 
 app.use('/api/auth', strictAuthLimiter, authRouter(loginLimiter))
+app.use('/api/tips', tipsRouter)
+app.use('/api/content', contentRouter)
+app.use('/api/admin', strictAuthLimiter, adminRouter)
 
 app.use((_req, res) => {
   res.status(404).json({ error: 'not_found' })

@@ -1,0 +1,119 @@
+/**
+ * 가로 정렬 통일: 헤더·본문·페이지 루트가 같은 --page-gutter-x 축을 씁니다.
+ * (app-shell__main 한 겹 + 페이지별 max-width·가로 padding 중복 제거)
+ */
+
+.app-shell__header-inner,
+.app-shell__page-tools {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: max(var(--page-gutter-x), env(safe-area-inset-left, 0px))
+    max(var(--page-gutter-x), env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+}
+
+.app-shell__main {
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: max(var(--page-gutter-x), env(safe-area-inset-left, 0px))
+    max(var(--page-gutter-x), env(safe-area-inset-right, 0px));
+}
+
+/* 페이지·허브 레이아웃 루트 */
+.app-shell__main :is(
+  .home,
+  .map-study,
+  .state-study,
+  .collection-study,
+  .extended-study,
+  .faq-page,
+  .playground-page,
+  .admin-page,
+  .auth-page,
+  .ui-kit,
+  .practical-react,
+  .fn-layout,
+  .pr-layout,
+  .not-found
+) {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  box-sizing: border-box;
+}
+
+/* 단독 페이지: 세로 여백만 (가로는 main) */
+.app-shell__main
+  :is(
+    .home,
+    .map-study,
+    .state-study,
+    .collection-study,
+    .extended-study,
+    .faq-page,
+    .playground-page,
+    .admin-page,
+    .practical-react,
+    .ui-kit,
+    .not-found
+  ) {
+  padding-inline: 0;
+  padding-block: var(--page-gutter-t) var(--page-gutter-b);
+}
+
+.app-shell__main .ui-kit {
+  padding-block: 0 var(--page-gutter-b);
+}
+
+.app-shell__main .admin-page {
+  padding-block: var(--space-3) var(--page-gutter-b);
+}
+
+/* 로그인: 폼 폭만 좁게, 가로는 main 기준 중앙 */
+.app-shell__main .auth-page {
+  max-width: 26rem;
+  margin-inline: auto;
+  padding-inline: 0;
+  padding-block: var(--space-5) var(--page-gutter-b);
+}
+
+/* 함수·실무 허브 레이아웃 */
+.app-shell__main .fn-layout,
+.app-shell__main .pr-layout {
+  padding-inline: 0;
+  padding-block: 0 var(--page-gutter-b);
+}
+
+.app-shell__main .fn-layout__head,
+.app-shell__main .pr-layout__head {
+  padding-inline: 0;
+  padding-block: 1rem 0.85rem;
+}
+
+.app-shell__main .fn-layout__tabs-scroll,
+.app-shell__main .pr-layout__tabs-scroll {
+  padding-inline: 0;
+}
+
+.app-shell__main .fn-layout__body :is(.map-study, .state-study, .collection-study),
+.app-shell__main .pr-layout__body :is(.extended-study, .practical-react) {
+  padding-inline: 0;
+  padding-block: var(--page-gutter-t) var(--page-gutter-b);
+}
+
+.app-shell__main .pr-layout__body .practical-react--embed {
+  padding-block: 0 var(--page-gutter-b);
+}
+
+/* UI 키트: pr-layout 헤더가 ui-kit 안에 있을 때 가로 중복 방지 */
+.app-shell__main .ui-kit > .pr-layout__head {
+  padding-inline: 0;
+}
+
+.app-shell__main .not-found {
+  max-width: min(36rem, 100%);
+  margin-inline: auto;
+  padding-inline: 0;
+  padding-block: var(--space-8) var(--page-gutter-b);
+}

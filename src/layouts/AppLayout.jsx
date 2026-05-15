@@ -5,14 +5,11 @@ import GlobalRouteSearch from '../components/site/GlobalRouteSearch.jsx'
 import PageFavoriteButton from '../components/site/PageFavoriteButton.jsx'
 import DocumentMeta from '../components/site/DocumentMeta.jsx'
 import KonamiEasterEgg from '../components/site/KonamiEasterEgg.jsx'
-import { recordVisitedPath } from '../lib/sessionVisitedPaths.js'
 import './AppLayout.css'
 
 export default function AppLayout() {
   const { pathname } = useLocation()
   const isHome = pathname === '/' || pathname === ''
-
-  recordVisitedPath(pathname || '/')
 
   return (
     <div className="app-shell">

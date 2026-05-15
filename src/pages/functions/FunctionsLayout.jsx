@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import ScrollableTabList from '../../components/ScrollableTabList.jsx'
+import { usePageHeader } from '../../hooks/usePageHeader.js'
 import './FunctionsLayout.css'
 
 const TABS = [
@@ -19,14 +20,13 @@ const TABS = [
 ]
 
 export default function FunctionsLayout() {
+  const header = usePageHeader('functions')
+
   return (
     <div className="fn-layout">
       <header className="fn-layout__head">
-        <h1 className="fn-layout__title">함수 학습</h1>
-        <p className="fn-layout__lead">
-          <code>map</code>·<code>useState</code>·배열·객체 메서드를 탭으로 나눠 두었습니다. 맨 끝{' '}
-          <strong>점검표</strong>에서 이 허브에 있는 주제를 한눈에 확인할 수 있습니다.
-        </p>
+        <h1 className="fn-layout__title">{header.title}</h1>
+        <p className="fn-layout__lead">{header.lead}</p>
       </header>
       <nav className="fn-layout__tabs" aria-label="함수별 탭">
         <ScrollableTabList trackClassName="fn-layout__tabs-scroll">

@@ -1,15 +1,31 @@
-import { useId, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 import { GEO_FAQ_ITEMS } from '../data/geoFaq.js'
 import { getRandomFaqTip } from '../data/homeDailyTips.js'
+import { fetchRandomFaqTip } from '../api/tipsClient.js'
+import { fetchFaqItems } from '../api/contentClient.js'
 import './FaqPage.css'
 
 export default function FaqPage() {
   const baseId = useId()
   const [openIndex, setOpenIndex] = useState(null)
+  const [faqItems, setFaqItems] = useState(GEO_FAQ_ITEMS)
   const [randomTip, setRandomTip] = useState(() => getRandomFaqTip())
 
+  useEffect(() => {
+    let cancelled = false
+    void fetchFaqItems().then((items) => {
+      if (!cancelled) setFaqItems(items)
+    })
+    void fetchRandomFaqTip().then((t) => {
+      if (!cancelled) setRandomTip(t)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   function shuffleTip() {
-    setRandomTip((prev) => getRandomFaqTip(prev))
+    void fetchRandomFaqTip(randomTip).then(setRandomTip)
   }
 
   return (
@@ -21,7 +37,7 @@ export default function FaqPage() {
       </header>
 
       <div className="faq-page__accordion">
-        {GEO_FAQ_ITEMS.map((item, i) => {
+        {faqItems.map((item, i) => {
           const panelId = `${baseId}-panel-${i}`
           const btnId = `${baseId}-btn-${i}`
           const isOpen = openIndex === i

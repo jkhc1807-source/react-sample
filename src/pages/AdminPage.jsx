@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
-import { apiUrl } from '../api/apiBase.js'
+import { fetchAdminUsers } from '../api/adminClient.js'
 import { useAuth } from '../hooks/useAuth.js'
+import AdminTipsEditor from '../components/admin/AdminTipsEditor.jsx'
+import AdminFaqEditor from '../components/admin/AdminFaqEditor.jsx'
+import AdminHomeEditor from '../components/admin/AdminHomeEditor.jsx'
+import AdminPageHeadersEditor from '../components/admin/AdminPageHeadersEditor.jsx'
 import './AdminPage.css'
 
 function AdminUsersTable() {
@@ -14,19 +18,14 @@ function AdminUsersTable() {
     ;(async () => {
       try {
         setListLoading(true)
-        const res = await fetch(apiUrl('/api/auth/admin/users'), { credentials: 'include' })
-        const data = await res.json().catch(() => ({}))
+        const users = await fetchAdminUsers()
         if (cancelled) return
-        if (!res.ok) {
-          setError(data.error || '요청 실패')
-          setRows([])
-          return
-        }
-        setRows(Array.isArray(data.users) ? data.users : [])
+        setRows(users)
         setError('')
-      } catch {
+      } catch (e) {
         if (cancelled) return
-        setError('API 요청 중 오류가 발생했습니다.')
+        setError(e.message === 'forbidden' ? '권한이 없습니다.' : '회원 목록을 불러오지 못했습니다.')
+        setRows([])
       } finally {
         if (!cancelled) setListLoading(false)
       }
@@ -86,6 +85,7 @@ function AdminUsersTable() {
 export default function AdminPage() {
   const { user, status, isAuthenticated } = useAuth()
   const location = useLocation()
+  const [tab, setTab] = useState('home')
   const isAdmin = user?.role === 'admin'
 
   if (status === 'loading') {
@@ -116,13 +116,61 @@ export default function AdminPage() {
     <article className="admin-page">
       <header className="admin-page__head">
         <p className="admin-page__eyebrow">Admin</p>
-        <h1 className="admin-page__title">회원 목록</h1>
+        <h1 className="admin-page__title">관리</h1>
         <p className="admin-page__lead">
-          메모리 데모라 새로고침이나 서버 재시작 후에는 목록이 비어 있을 수 있습니다.
+          개발 환경에서는 <code>admin</code> / <code>admin</code> 으로 로그인할 수 있습니다. 콘텐츠는{' '}
+          <code>server/data/*.json</code>에 저장됩니다.
         </p>
       </header>
 
-      <AdminUsersTable />
+      <nav className="admin-page__tabs" aria-label="관리 메뉴">
+        <button
+          type="button"
+          className={`admin-page__tab${tab === 'home' ? ' admin-page__tab--active' : ''}`}
+          onClick={() => setTab('home')}
+        >
+          홈
+        </button>
+        <button
+          type="button"
+          className={`admin-page__tab${tab === 'faq' ? ' admin-page__tab--active' : ''}`}
+          onClick={() => setTab('faq')}
+        >
+          FAQ
+        </button>
+        <button
+          type="button"
+          className={`admin-page__tab${tab === 'learn' ? ' admin-page__tab--active' : ''}`}
+          onClick={() => setTab('learn')}
+        >
+          학습 헤더
+        </button>
+        <button
+          type="button"
+          className={`admin-page__tab${tab === 'tips' ? ' admin-page__tab--active' : ''}`}
+          onClick={() => setTab('tips')}
+        >
+          팁
+        </button>
+        <button
+          type="button"
+          className={`admin-page__tab${tab === 'users' ? ' admin-page__tab--active' : ''}`}
+          onClick={() => setTab('users')}
+        >
+          회원
+        </button>
+      </nav>
+
+      {tab === 'home' && <AdminHomeEditor />}
+      {tab === 'faq' && <AdminFaqEditor />}
+      {tab === 'learn' && <AdminPageHeadersEditor />}
+      {tab === 'tips' && <AdminTipsEditor />}
+      {tab === 'users' && (
+        <>
+          <h2 className="admin-page__section-title">회원 목록</h2>
+          <AdminUsersTable />
+        </>
+      )}
     </article>
   )
 }

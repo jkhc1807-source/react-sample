@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import ScrollableTabList from '../../components/ScrollableTabList.jsx'
+import { usePageHeader } from '../../hooks/usePageHeader.js'
 import './PracticeLayout.css'
 
 const TABS = [
@@ -12,14 +13,13 @@ const TABS = [
 ]
 
 export default function PracticeLayout() {
+  const header = usePageHeader('practice')
+
   return (
     <div className="pr-layout">
       <header className="pr-layout__head">
-        <h1 className="pr-layout__title">실무·심화</h1>
-        <p className="pr-layout__lead">
-          예전의 <strong>실무 패턴</strong> 페이지와 <strong>다음 단계(심화)</strong> 예제를 한 허브로
-          모았습니다. 탭마다 한 가지 업무 흐름에 가깝게 구성했습니다.
-        </p>
+        <h1 className="pr-layout__title">{header.title}</h1>
+        <p className="pr-layout__lead">{header.lead}</p>
       </header>
       <nav className="pr-layout__tabs" aria-label="실무·심화 탭">
         <ScrollableTabList trackClassName="pr-layout__tabs-scroll">

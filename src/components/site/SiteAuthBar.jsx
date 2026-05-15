@@ -136,7 +136,7 @@ export default function SiteAuthBar() {
               <div className="site-auth__panel-actions">
                 {isAdmin && (
                   <Link to="/admin" className="site-auth__panel-link">
-                    어드민
+                    관리
                   </Link>
                 )}
                 <button type="button" className="site-auth__panel-logout" onClick={() => logout()}>

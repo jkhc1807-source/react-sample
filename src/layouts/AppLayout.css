@@ -55,9 +55,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
-  max-width: var(--page-content-max);
-  margin: 0 auto;
-  padding: clamp(0.55rem, 2vw, 0.85rem) clamp(0.75rem, 4vw, 1.5rem) clamp(0.5rem, 1.5vw, 0.65rem);
+  padding-block: clamp(0.55rem, 2vw, 0.85rem) clamp(0.5rem, 1.5vw, 0.65rem);
   box-sizing: border-box;
 }
 
@@ -100,11 +98,9 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  max-width: var(--page-content-max);
-  margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
-  padding: 0.4rem clamp(0.75rem, 4vw, 1.5rem);
+  padding-block: 0.4rem;
   border-bottom: 1px solid var(--divider-line, var(--border));
   background: color-mix(in srgb, var(--surface) 60%, transparent);
 }
@@ -178,13 +174,7 @@
 .app-shell__main {
   flex: 1;
   width: 100%;
-  max-width: var(--page-content-max);
-  margin: 0 auto;
-  /* 가로: 페이지 루트(.home, .map-study 등)의 --page-gutter-x 한 번만 쓰기 — main과 이중 여백 방지 */
   padding-block: clamp(0.85rem, 3.2vw, 2.1rem);
-  padding-inline: 0;
-  padding-left: env(safe-area-inset-left, 0px);
-  padding-right: env(safe-area-inset-right, 0px);
   box-sizing: border-box;
   scroll-margin-top: 8.5rem;
 }
@@ -200,13 +190,11 @@
 
 @media (max-width: 640px) {
   .app-shell__header-inner {
-    padding: 0.5rem max(0.6rem, env(safe-area-inset-left, 0px)) 0.4rem
-      max(0.6rem, env(safe-area-inset-right, 0px));
+    padding-block: 0.5rem 0.4rem;
   }
 
   .app-shell__page-tools {
-    padding: 0.3rem max(0.6rem, env(safe-area-inset-left, 0px)) 0.35rem
-      max(0.6rem, env(safe-area-inset-right, 0px));
+    padding-block: 0.3rem 0.35rem;
   }
 
   .app-shell__main {

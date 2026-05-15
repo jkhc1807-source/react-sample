@@ -35,6 +35,7 @@ import {
 } from './snippets/uiKitSnippets.js'
 import uiKitInlineAlertsCss from './snippets/paste/UiKitInlineAlerts.css?raw'
 import './practice/PracticeLayout.css'
+import { usePageHeader } from '../hooks/usePageHeader.js'
 import './UiKitPage.css'
 
 const toc = [
@@ -54,6 +55,7 @@ const toc = [
 ]
 
 export default function UiKitPage() {
+  const header = usePageHeader('uiKit')
   const { hash } = useLocation()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -99,12 +101,8 @@ export default function UiKitPage() {
   return (
     <div className="ui-kit">
       <header className="pr-layout__head">
-        <h1 className="pr-layout__title">UI 컴포넌트 키트</h1>
-        <p className="pr-layout__lead">
-          <strong>샘플 모음(Playground)</strong>에 나오는 카드·뱃지·읽기 전용 필드·카운터·할 일 목록
-          같은 UI 조각을, 여기서는 <code>src/components/ui</code>의 재사용 컴포넌트로 정리해
-          두었습니다. 복사할 때는 <strong>jsx와 css를 세트</strong>로 가져가면 됩니다.
-        </p>
+        <h1 className="pr-layout__title">{header.title}</h1>
+        <p className="pr-layout__lead">{header.lead}</p>
         <div className="ui-kit__meta-badges" role="list">
           <span role="listitem">
             <Badge variant="accent">폼</Badge>
