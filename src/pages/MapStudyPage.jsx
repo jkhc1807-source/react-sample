@@ -192,20 +192,22 @@ export default function MapStudyPage() {
           code={tagsStateDemoCss.trim()}
         />
         <p className="map-study__label">화면</p>
-        <div className="tags-state-demo__tags">
-          {tags.map((tag, i) => (
-            <span className="tags-state-demo__tag" key={`${tag}-${i}`}>
-              {tag}
-            </span>
-          ))}
+        <div className="hub-demo-shell hub-demo-shell--stack">
+          <div className="tags-state-demo__tags">
+            {tags.map((tag, i) => (
+              <span className="tags-state-demo__tag" key={`${tag}-${i}`}>
+                {tag}
+              </span>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="map-study__btn"
+            onClick={() => setTags((prev) => [...prev, `항목 ${prev.length + 1}`])}
+          >
+            태그 하나 추가
+          </button>
         </div>
-        <button
-          type="button"
-          className="map-study__btn"
-          onClick={() => setTags((prev) => [...prev, `항목 ${prev.length + 1}`])}
-        >
-          태그 하나 추가
-        </button>
       </section>
 
       <section className="map-study__section">
@@ -308,22 +310,24 @@ export default function MapStudyPage() {
         </p>
         <CodeSample label="예시 소스 (복붙용)" fileHint="컴포넌트 안" code={MAP_SNIPPET_10} />
         <p className="map-study__label">화면</p>
-        <label className="map-study__field">
-          용어 검색
-          <input
-            value={glossQuery}
-            onChange={(e) => setGlossQuery(e.target.value)}
-            placeholder="예: key"
-            autoComplete="off"
-          />
-        </label>
-        <ul className="pass-list-demo__list">
-          {filteredGlossary.map((g) => (
-            <li key={g.id}>
-              <strong>{g.term}</strong> — {g.desc}
-            </li>
-          ))}
-        </ul>
+        <div className="hub-demo-shell hub-demo-shell--stack">
+          <label className="map-study__field">
+            용어 검색
+            <input
+              value={glossQuery}
+              onChange={(e) => setGlossQuery(e.target.value)}
+              placeholder="예: key"
+              autoComplete="off"
+            />
+          </label>
+          <ul className="pass-list-demo__list">
+            {filteredGlossary.map((g) => (
+              <li key={g.id}>
+                <strong>{g.term}</strong> — {g.desc}
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
     </div>
   )

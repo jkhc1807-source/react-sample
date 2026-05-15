@@ -1,0 +1,75 @@
+.pr-snack__trigger {
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--ui-radius-sm);
+  font-size: 0.86rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px dashed var(--border);
+  background: var(--surface-soft);
+  color: var(--text-h);
+}
+
+.pr-snack__trigger:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 2px;
+}
+
+.pr-snack__wrap {
+  position: relative;
+  min-height: 3.25rem;
+  margin-top: var(--space-3);
+  overflow: hidden;
+}
+
+.pr-snack__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--ui-radius-sm);
+  background: var(--text-h);
+  color: var(--surface);
+  font-size: 0.88rem;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-120%);
+  opacity: 0;
+  transition:
+    transform 0.32s cubic-bezier(0.32, 0.72, 0, 1),
+    opacity 0.25s ease;
+}
+
+.pr-snack__wrap--show .pr-snack__bar {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.pr-snack__undo {
+  margin-left: auto;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--ui-radius-sm);
+  font-weight: 700;
+  font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--surface) 35%, transparent);
+  background: transparent;
+  color: var(--surface);
+}
+
+.pr-snack__x {
+  padding: 0.15rem 0.45rem;
+  border: none;
+  background: transparent;
+  color: color-mix(in srgb, var(--surface) 72%, transparent);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pr-snack__bar {
+    transition: none;
+  }
+}

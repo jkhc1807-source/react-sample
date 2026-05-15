@@ -1,0 +1,52 @@
+.pr-like__caption {
+  margin: 0 0 var(--space-3);
+  font-size: 0.86rem;
+  color: var(--text-muted, var(--text));
+}
+
+.pr-like__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.pr-like__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.4rem;
+  padding: 0 0.95rem;
+  border-radius: var(--ui-radius-pill);
+  font-size: 0.86rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--ui-control-border);
+  background: var(--ui-control-bg);
+  color: var(--text-h);
+}
+
+.pr-like__btn--on {
+  border-color: color-mix(in srgb, var(--ui-danger) 45%, var(--border));
+  background: color-mix(in srgb, var(--ui-danger) 10%, var(--surface));
+  color: color-mix(in srgb, var(--ui-danger) 92%, var(--text-h));
+}
+
+.pr-like__btn:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 2px;
+}
+
+.pr-like__icon {
+  font-size: 1rem;
+}
+
+.pr-like__count {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.pr-like__count strong {
+  font-variant-numeric: tabular-nums;
+}

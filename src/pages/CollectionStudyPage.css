@@ -54,12 +54,7 @@
 }
 
 .collection-study__label {
-  margin: 0.75rem 0 0.35rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text);
-  opacity: 0.65;
-  letter-spacing: 0.02em;
+  margin: 0;
 }
 
 .collection-study .code-sample {
@@ -84,10 +79,14 @@
 
 .collection-study__controls button {
   font: inherit;
-  padding: 0.45rem 0.85rem;
-  border-radius: 8px;
+  min-height: 2.4rem;
+  padding: 0 0.95rem;
+  border-radius: var(--ui-radius-sm);
   border: 1px solid var(--border);
-  background: var(--social-bg);
+  background: var(--surface-soft);
+  color: var(--text-h);
+  font-weight: 600;
+  font-size: 0.86rem;
   cursor: pointer;
   width: fit-content;
 }

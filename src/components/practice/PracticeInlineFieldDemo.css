@@ -1,0 +1,29 @@
+.pr-field__label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.pr-field__input {
+  width: 100%;
+  max-width: 16rem;
+  box-sizing: border-box;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--ui-radius-sm);
+  border: 1px solid var(--ui-control-border);
+  font-size: 0.92rem;
+  font-family: inherit;
+}
+
+.pr-field__input--invalid {
+  border-color: color-mix(in srgb, var(--ui-danger) 55%, var(--border));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ui-danger) 20%, transparent);
+}
+
+.pr-field__error {
+  margin: var(--space-2) 0 0;
+  font-size: 0.82rem;
+  color: var(--ui-danger);
+}

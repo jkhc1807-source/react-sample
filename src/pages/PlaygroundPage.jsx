@@ -25,6 +25,8 @@ import {
 } from './snippets/playgroundSnippets.js'
 import './PlaygroundPage.css'
 
+const EXTERNAL_CODESANDBOX_URL = 'https://codesandbox.io/p/sandbox/2x4cck'
+
 export default function PlaygroundPage() {
   return (
     <div className="playground-page">
@@ -32,7 +34,16 @@ export default function PlaygroundPage() {
         <h1 className="playground-page__title">샘플 모음 (기초 예제)</h1>
         <p className="playground-page__lead">
           강의·튜토리얼에서 자주 나오는 작은 조각들을 한 페이지에 모았습니다. 모바일에서도 줄바꿈과
-          그리드가 깨지지 않도록 정리했습니다.
+          그리드가 깨지지 않도록 정리했습니다. JSX를 넓게 실험하려면{' '}
+          <a
+            href={EXTERNAL_CODESANDBOX_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="playground-page__codepen-link"
+          >
+            CodeSandbox에서 열기
+          </a>
+          하세요 (새 탭).
         </p>
       </header>
 

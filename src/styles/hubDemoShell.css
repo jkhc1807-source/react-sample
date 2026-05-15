@@ -1,0 +1,204 @@
+/**
+ * 함수(map/state/collection)·실무·심화(extended-study) 샘플 출력 통일
+ * — 라벨 타이포 + .hub-demo-shell 카드 + 라벨 직후 단일 루트 자동 카드
+ */
+
+/* ----- “화면” 라벨 (공통) ----- */
+.map-study__label,
+.state-study__label,
+.collection-study__label,
+.extended-study__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-2);
+  padding: 0.15rem 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text-h) 58%, var(--accent));
+}
+
+.map-study__label::before,
+.state-study__label::before,
+.collection-study__label::before,
+.extended-study__label::before {
+  content: '';
+  width: 3px;
+  height: 0.9rem;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 40%, var(--text-h)));
+}
+
+/* ----- 명시 래퍼 (여러 루트 데모) ----- */
+.hub-demo-shell {
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-bottom: var(--space-1);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--ui-radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.hub-demo-shell--stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.hub-demo-shell--row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+.hub-demo-shell .counter-demo__line {
+  margin: 0;
+  color: var(--text-h);
+}
+
+.hub-demo-shell .counter-demo__actions {
+  margin: 0;
+}
+
+.hub-demo-shell .counter-demo__btn {
+  border-color: var(--border);
+  background: var(--surface);
+  color: var(--text-h);
+}
+
+.hub-demo-shell .counter-demo__btn:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+}
+
+.hub-demo-shell .map-study__field {
+  margin: 0;
+  max-width: none;
+  width: 100%;
+}
+
+.hub-demo-shell .state-study__form-block {
+  margin-bottom: var(--space-3);
+  padding: var(--space-4);
+  width: 100%;
+  max-width: 26rem;
+  box-sizing: border-box;
+  border-radius: var(--ui-radius-sm);
+  border: 1px solid var(--divider-line);
+  background: var(--surface-soft);
+}
+
+.hub-demo-shell .state-study__form-block:last-child {
+  margin-bottom: 0;
+}
+
+.hub-demo-shell .state-study__field {
+  color: var(--text-h);
+}
+
+.hub-demo-shell .state-study__mono {
+  color: var(--text);
+}
+
+.extended-study__label + .pr-tilt,
+.extended-study__label + .pr-orbit,
+.extended-study__label + .pr-sheet,
+.extended-study__label + .pr-like,
+.extended-study__label + .pr-chips,
+.extended-study__label + .pr-snack,
+.extended-study__label + .pr-field,
+.extended-study__label + .order-queue {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+}
+
+/* ----- 라벨 바로 다음 한 블록 = 자동 카드 (단일 루트) ----- */
+.map-study__label + *,
+.collection-study__label + *,
+.extended-study__label + * {
+  box-sizing: border-box;
+}
+
+.map-study__label + *:not(.hub-demo-shell),
+.collection-study__label + *:not(.hub-demo-shell),
+.extended-study__label + *:not(.hub-demo-shell):not(.post-explorer):not(.pr-tilt):not(.pr-orbit):not(.pr-sheet):not(.pr-like):not(.pr-chips):not(.pr-snack):not(.pr-field):not(.order-queue) {
+  margin-top: 0;
+  margin-bottom: var(--space-1);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--ui-radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.map-study__label + table,
+.collection-study__label + table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.map-study__label + table > *,
+.collection-study__label + table > * {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* ----- 함수 탭 공통 버튼 (map-study__btn) ----- */
+.map-study__btn {
+  min-height: 2.45rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--ui-radius-sm);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
+  color: var(--text-h);
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--text-h) 6%, transparent);
+}
+
+.map-study__btn:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+.map-study__btn:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 2px;
+}
+
+.map-study__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: min(100%, 22rem);
+}
+
+.map-study__field input {
+  min-height: 2.45rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--ui-radius-sm);
+  border: 1px solid var(--ui-control-border);
+  background: var(--ui-control-bg);
+  color: var(--text-h);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .map-study__btn {
+    transition:
+      border-color 0.15s ease,
+      background 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+}

@@ -2,7 +2,7 @@
  * 홈 검색에서 경로 매칭용 (제목·부제·키워드 포함)
  */
 export const HOME_SEARCH_ROUTES = [
-  { path: '/', title: '홈', subtitle: '학습 허브 시작', keywords: ['home', '메인', '처음'] },
+  { path: '/', title: '홈', subtitle: '입구 안내 (예제는 메뉴·실무·심화)', keywords: ['home', '메인', '처음'] },
   {
     path: '/faq',
     title: '자주 묻는 질문',
@@ -24,8 +24,8 @@ export const HOME_SEARCH_ROUTES = [
   {
     path: '/playground',
     title: '샘플 모음',
-    subtitle: '버튼, 표현식, 카운터, 할 일 등 기초 예제',
-    keywords: ['playground', '기초', '예제', 'tutorial'],
+    subtitle: '기초 예제 모음 (실시간 편집은 CodeSandbox 링크)',
+    keywords: ['playground', '기초', '예제', 'tutorial', 'codesandbox', 'codepen', 'jsx', '에디터'],
   },
   {
     path: '/functions/map',
@@ -108,26 +108,26 @@ export const HOME_SEARCH_ROUTES = [
   {
     path: '/practice/overview',
     title: '실무·심화 — 개요',
-    subtitle: '/practice 허브',
+    subtitle: '개념 정리 + 탭별 예제 안내',
     keywords: ['실무', '심화', 'overview'],
   },
   {
     path: '/practice/ui',
     title: '실무·심화 — UI',
-    subtitle: 'UI 패턴',
-    keywords: ['ui', '패널'],
+    subtitle: '이벤트·fetch + 모션·시트·좋아요',
+    keywords: ['ui', '패널', 'transform', 'sheet', 'like'],
   },
   {
     path: '/practice/data',
     title: '실무·심화 — 데이터',
-    subtitle: '데이터 패널',
-    keywords: ['data', '데이터'],
+    subtitle: '필터 칩 + 탐색 패널',
+    keywords: ['data', '데이터', 'chip', '디바운스'],
   },
   {
     path: '/practice/workshop',
     title: '실무·심화 — 워크샵',
-    subtitle: '폼 등',
-    keywords: ['workshop', '폼'],
+    subtitle: '폼·인라인 검증·목록·토스트·큐',
+    keywords: ['workshop', '폼', '토스트', 'undo'],
   },
   {
     path: '/practice/async',

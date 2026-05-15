@@ -151,32 +151,51 @@
 .extended-demo__field input,
 .extended-demo__field textarea {
   font: inherit;
-  padding: 0.5rem 0.65rem;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: inherit;
+  min-height: 2.45rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--ui-radius-sm);
+  border: 1px solid var(--ui-control-border);
+  background: var(--ui-control-bg);
+  color: var(--text-h);
+}
+
+.extended-demo__field input:focus-visible,
+.extended-demo__field textarea:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 1px;
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
 }
 
 .extended-demo__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .extended-demo__actions button {
   font: inherit;
-  padding: 0.45rem 0.85rem;
-  border-radius: 8px;
+  min-height: 2.45rem;
+  padding: 0 1rem;
+  border-radius: var(--ui-radius-sm);
   border: 1px solid var(--border);
-  background: var(--social-bg);
+  background: var(--surface-soft);
+  color: var(--text-h);
+  font-weight: 600;
+  font-size: 0.88rem;
   cursor: pointer;
 }
 
 .extended-demo__actions button[type='submit'] {
-  background: var(--accent-bg);
-  border-color: var(--accent-border);
-  color: var(--text-h);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 94%, #000) 0%, var(--accent) 100%);
+  color: var(--ui-on-accent);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.extended-demo__actions button:focus-visible,
+.extended-demo__row button:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 2px;
 }
 
 .extended-demo__error {
@@ -221,10 +240,14 @@
 
 .extended-demo__row button {
   font: inherit;
-  padding: 0.45rem 0.75rem;
-  border-radius: 8px;
+  min-height: 2.35rem;
+  padding: 0 0.85rem;
+  border-radius: var(--ui-radius-sm);
   border: 1px solid var(--border);
-  background: var(--social-bg);
+  background: var(--surface-soft);
+  color: var(--text-h);
+  font-weight: 600;
+  font-size: 0.86rem;
   cursor: pointer;
 }
 
@@ -259,10 +282,14 @@
 
 .extended-demo__list-actions button {
   font: inherit;
-  padding: 0.2rem 0.45rem;
-  border-radius: 6px;
+  min-height: 2rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--ui-radius-sm);
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--surface);
+  color: var(--text-h);
+  font-weight: 600;
+  font-size: 0.78rem;
   cursor: pointer;
 }
 

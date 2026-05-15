@@ -25,6 +25,13 @@
   max-width: none;
 }
 
+.playground-page__codepen-link {
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 .playground-page__demo-label {
   margin: 0 0 0.35rem;
   font-size: 0.8rem;

@@ -12,17 +12,20 @@
 }
 
 .counter-demo__btn {
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.06);
-  color: inherit;
+  min-height: 2.45rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--ui-radius-sm);
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
+  color: var(--text-h);
+  font-weight: 600;
+  font-size: 0.88rem;
   cursor: pointer;
-  font-size: 0.9rem;
 }
 
 .counter-demo__btn:hover {
-  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
 }
 
 @media (prefers-color-scheme: light) {
@@ -31,11 +34,12 @@
   }
 
   .counter-demo__btn {
-    border-color: #d4d4d8;
-    background: #fff;
+    border-color: var(--border);
+    background: var(--surface);
   }
 
   .counter-demo__btn:hover {
-    background: #f4f4f5;
+    background: var(--accent-bg);
+    border-color: var(--accent-border);
   }
 }

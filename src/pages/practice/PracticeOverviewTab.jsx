@@ -10,10 +10,11 @@ export default function PracticeOverviewTab() {
           <span className="pr-tab__overview-subhead">이 허브에서 다루는 것</span>
         </h2>
         <p className="extended-study__lead">
-          <strong>UI·이벤트</strong> 탭은 클릭·폼·조건부 렌더·타이머·fetch·props·ref까지 한 번에 돌아볼 수
-          있게 묶었습니다. <strong>데이터·검색</strong>은 디바운스·중단 가능한 fetch·클라이언트 필터가
-          들어간 패널입니다. <strong>폼·목록·큐</strong>는 검증 폼·id 기반 목록·주문 상태 전이를
-          합쳤습니다.
+          <strong>UI·이벤트</strong> 탭은 클릭·폼·조건부 렌더·타이머·fetch·props·ref와 함께,{' '}
+          <strong>모션·시트·좋아요</strong> 같은 짧은 UI 패턴 소스를 포함합니다.{' '}
+          <strong>데이터·검색</strong>은 필터 칩과 디바운스·중단 가능한 fetch·클라이언트 필터 패널입니다.{' '}
+          <strong>폼·목록·큐</strong>는 폼 한 사이클·인라인 검증·목록 key·실행 취소 토스트·주문 큐를
+          묶었습니다.
         </p>
         <ul className="extended-study__section-lead pr-tab__bulleted-lead">
           <li>

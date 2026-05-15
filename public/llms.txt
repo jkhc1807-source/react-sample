@@ -8,19 +8,19 @@ React 학습용 예제 모음(SPA). 컴포넌트·상태·배열 메서드·UI·
 
 ## 권장 탐색 순서
 
-1. [홈](/) — 권장 학습 순서·추천 (즐겨찾기는 상단 메뉴)
-2. [샘플 모음](/playground) — 기초 예제
+1. [홈](/) — 허브 입구 안내 (예제는 상단 메뉴·실무·심화 탭)
+2. [샘플 모음](/playground) — 기초 예제 (실시간 편집은 페이지 안의 CodeSandbox 링크)
 3. [함수 — map](/functions/map) — 배열·데이터 처리
 4. [UI 키트](/ui-kit) — 폼·모달 등
 5. [실무·심화 — 개요](/practice/overview) — 패널·비동기·품질
 
 ## 전체 라우트 카탈로그 (경로·제목·한 줄 설명)
 
-- [홈](/): 학습 허브 시작
+- [홈](/): 입구 안내 (예제는 메뉴·실무·심화)
 - [자주 묻는 질문](/faq): 소개·학습 순서·인증 데모·도움말
 - [로그인 · 회원가입](/auth): httpOnly 쿠키 세션
 - [어드민 — 회원 목록](/admin): 가입 사용자 조회 (dev only)
-- [샘플 모음](/playground): 버튼, 표현식, 카운터, 할 일 등 기초 예제
+- [샘플 모음](/playground): 기초 예제 모음 (실시간 편집은 CodeSandbox 링크)
 - [함수 — map 배열 변환](/functions/map): /functions 학습 허브
 - [함수 — useState 상태](/functions/state): /functions 학습 허브
 - [함수 — filter](/functions/filter): 조건 필터링
@@ -34,10 +34,10 @@ React 학습용 예제 모음(SPA). 컴포넌트·상태·배열 메서드·UI·
 - [함수 — 객체 메서드](/functions/object): Object 유틸
 - [함수 — Set](/functions/set): 중복 없는 값
 - [함수 — Coverage 점검](/functions/coverage): 정리 및 점검표
-- [실무·심화 — 개요](/practice/overview): /practice 허브
-- [실무·심화 — UI](/practice/ui): UI 패턴
-- [실무·심화 — 데이터](/practice/data): 데이터 패널
-- [실무·심화 — 워크샵](/practice/workshop): 폼 등
+- [실무·심화 — 개요](/practice/overview): 개념 정리 + 탭별 예제 안내
+- [실무·심화 — UI](/practice/ui): 이벤트·fetch + 모션·시트·좋아요
+- [실무·심화 — 데이터](/practice/data): 필터 칩 + 탐색 패널
+- [실무·심화 — 워크샵](/practice/workshop): 폼·인라인 검증·목록·토스트·큐
 - [실무·심화 — 비동기](/practice/async): fetch·effect
 - [실무·심화 — 품질](/practice/quality): 에러 경계 등
 - [UI 키트](/ui-kit): 카드·뱃지·폼·모달·토스트·샘플과 동일 패턴

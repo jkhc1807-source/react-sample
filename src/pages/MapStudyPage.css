@@ -67,15 +67,6 @@
   color: color-mix(in srgb, var(--text) 55%, var(--text-h));
 }
 
-.map-study__label {
-  margin: 0 0 0.35rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text);
-  text-transform: none;
-  letter-spacing: 0.02em;
-}
-
 .map-study__code {
   margin: 0 0 1rem;
   padding: 1rem;
@@ -90,28 +81,7 @@
   color: var(--text-h);
 }
 
-.map-study__btn {
-  padding: 0.5rem 1rem;
-  border-radius: var(--ui-radius);
-  border: 1px solid var(--ui-control-border);
-  background: var(--ui-control-bg);
-  color: var(--text-h);
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: background 0.15s ease, border-color 0.15s ease;
-}
-
-.map-study__btn:hover {
-  background: var(--accent-bg);
-  border-color: var(--accent-border);
-}
-
 @media (prefers-color-scheme: light) {
-  .map-study__label {
-    color: #525252;
-  }
-
   .map-study__lead {
     color: var(--text);
   }
@@ -123,16 +93,6 @@
   .map-study__code {
     background: var(--ui-code-surface);
     border-color: var(--ui-panel-border);
-  }
-
-  .map-study__btn {
-    border-color: var(--border);
-    background: var(--ui-control-bg);
-  }
-
-  .map-study__btn:hover {
-    background: var(--accent-bg);
-    border-color: var(--accent-border);
   }
 }
 
