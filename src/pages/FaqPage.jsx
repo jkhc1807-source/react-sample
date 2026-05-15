@@ -1,10 +1,16 @@
 import { useId, useState } from 'react'
 import { GEO_FAQ_ITEMS } from '../data/geoFaq.js'
+import { getRandomFaqTip } from '../data/homeDailyTips.js'
 import './FaqPage.css'
 
 export default function FaqPage() {
   const baseId = useId()
   const [openIndex, setOpenIndex] = useState(null)
+  const [randomTip, setRandomTip] = useState(() => getRandomFaqTip())
+
+  function shuffleTip() {
+    setRandomTip((prev) => getRandomFaqTip(prev))
+  }
 
   return (
     <article className="faq-page">
@@ -50,6 +56,18 @@ export default function FaqPage() {
           )
         })}
       </div>
+
+      <section className="faq-page__tip" aria-labelledby="faq-random-tip">
+        <div className="faq-page__tip-head">
+          <h2 id="faq-random-tip" className="faq-page__tip-title">
+            무작위 팁
+          </h2>
+          <button type="button" className="faq-page__tip-shuffle" onClick={shuffleTip}>
+            다른 팁
+          </button>
+        </div>
+        <p className="faq-page__tip-body">{randomTip}</p>
+      </section>
 
       <section className="faq-page__extra" aria-labelledby="faq-llms">
         <h2 id="faq-llms" className="faq-page__extra-title">

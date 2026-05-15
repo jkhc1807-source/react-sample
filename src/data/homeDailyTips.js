@@ -1,0 +1,51 @@
+/** 날짜별로 하나씩 바뀌는 홈 “오늘의 한 줄” (짧은 학습 팁) */
+export const HOME_DAILY_TIPS = [
+  '컴포넌트 밖에서 만든 객체/배열을 state 초기값으로 쓰면 참조가 공유될 수 있어요. 리스트는 보통 빈 배열 []로 두세요.',
+  '`key`는 형제 사이에서만 구분되면 됩니다. 전역 유일 ID일 필요는 없어요.',
+  '이벤트 핸들러에 인자를 넘길 때 `onClick={() => fn(id)}` 처럼 감싸면 매 렌더마다 새 함수가 생겨요. 꼭 필요할 때만 쓰세요.',
+  '`useEffect`의 의존성 배열은 “이 값이 바뀌면 이펙트를 다시 돌린다”는 선언이에요. 빈 배열은 마운트 때 한 번.',
+  '조건부로 훅을 호출하면 안 됩니다. 훅은 항상 같은 순서·같은 횟수로 호출돼야 해요.',
+  '리스트 렌더링에서 `map`의 콜백은 `key`를 꼭 넘기세요. 인덱스 키는 순서가 바뀔 때 문제가 되기 쉬워요.',
+  '`setState`에 객체를 넣을 때는 불변으로 갱신하세요. `setForm((f) => ({ ...f, x: 1 }))` 패턴이 안전해요.',
+  '제어 컴포넌트는 `value`와 `onChange`를 같이 쓰는 패턴이에요. 한쪽만 있으면 경고나 버그로 이어질 수 있어요.',
+  '`children`은 이미 props에 들어 있어요. 래퍼 컴포넌트를 만들 때 자주 씁니다.',
+  '개발 모드에서는 Strict Mode 때문에 이펙트가 두 번 돌아가는 것처럼 보일 수 있어요. 클린업을 꼭 작성하세요.',
+  '접근성: 버튼이면 `<button>`, 이동이면 `<a href>`를 쓰는 게 기본이에요. `div`에 `onClick`만 붙이지 마세요.',
+  '`async` 함수를 `useEffect` 콜백에 바로 넣지 말고, 안에서 async 함수를 정의한 뒤 호출하세요.',
+]
+
+/** FAQ에서만 섞어 쓰는 짧은 안내 (검색·즐겨찾기 등) */
+export const FAQ_BONUS_TIPS = [
+  '상단 검색창은 경로 일부만 넣어도 페이지를 찾을 수 있어요. 예: `map`, `practice`.',
+  '즐겨찾기는 페이지마다 본문 위쪽 별(☆)으로 추가·해제합니다. 홈 검색의 빈 목록에도 반영돼요.',
+  '같은 탭에서 여러 페이지를 열었다면 홈의「이번 탭에서 N개…」가 숫자를 알려 줘요. 탭을 닫으면 초기화됩니다.',
+]
+
+/**
+ * @param {Date} [d]
+ * @returns {string}
+ */
+export function getTipForDate(d = new Date()) {
+  const key = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
+  let hash = 0
+  for (let i = 0; i < key.length; i++) {
+    hash = (hash * 31 + key.charCodeAt(i)) | 0
+  }
+  const idx = Math.abs(hash) % HOME_DAILY_TIPS.length
+  return HOME_DAILY_TIPS[idx]
+}
+
+/** FAQ 등에서 쓰는 무작위 팁 (같은 문장 연속 회피 가능) */
+export function getRandomLearningTip(exclude = null) {
+  const pool = exclude ? HOME_DAILY_TIPS.filter((t) => t !== exclude) : [...HOME_DAILY_TIPS]
+  if (pool.length === 0) return HOME_DAILY_TIPS[0]
+  return pool[Math.floor(Math.random() * pool.length)]
+}
+
+/** 학습 팁 + FAQ용 보너스 문장을 합친 무작위 팁 */
+export function getRandomFaqTip(exclude = null) {
+  const merged = [...HOME_DAILY_TIPS, ...FAQ_BONUS_TIPS]
+  const pool = exclude ? merged.filter((t) => t !== exclude) : [...merged]
+  if (pool.length === 0) return merged[0]
+  return pool[Math.floor(Math.random() * pool.length)]
+}

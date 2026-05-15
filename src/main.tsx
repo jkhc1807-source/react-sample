@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './index.css'
 import './styles/hubDemoShell.css'
+import { logHubConsoleGreeting } from './bootConsoleFun.js'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import AppErrorFallback from './components/AppErrorFallback.jsx'
 import { AuthProvider } from './contexts/AuthProvider.jsx'
@@ -107,3 +108,5 @@ createRoot(rootEl).render(
     </BrowserRouter>
   </StrictMode>,
 )
+
+logHubConsoleGreeting()

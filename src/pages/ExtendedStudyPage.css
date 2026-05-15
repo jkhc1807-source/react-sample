@@ -49,19 +49,6 @@
   margin-top: 0;
 }
 
-.extended-study__label {
-  margin: 0.75rem 0 0.35rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text);
-  opacity: 0.65;
-  letter-spacing: 0.02em;
-}
-
-.extended-study .code-sample {
-  margin-top: 0.5rem;
-}
-
 .extended-study__section--concepts {
   background: var(--surface-soft);
   padding: 1.25rem 1rem;

@@ -65,14 +65,6 @@
   color: rgba(255, 255, 255, 0.82);
 }
 
-.state-study__label {
-  margin: 0 0 0.35rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.55);
-  letter-spacing: 0.02em;
-}
-
 .state-study__code {
   margin: 0 0 1rem;
   padding: 1rem;
@@ -155,10 +147,6 @@
 }
 
 @media (prefers-color-scheme: light) {
-  .state-study__label {
-    color: #64748b;
-  }
-
   .state-study__lead {
     color: #3c3c3c;
   }

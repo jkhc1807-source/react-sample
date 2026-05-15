@@ -6,6 +6,7 @@
   box-sizing: border-box;
 }
 
+/* ----- 히어로 ----- */
 .home__hero {
   position: relative;
   text-align: center;
@@ -50,6 +51,21 @@
   opacity: 0.95;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes home-blobs-drift {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    100% {
+      transform: translate3d(1.5%, -0.8%, 0) scale(1.02);
+    }
+  }
+
+  .home__hero-blobs {
+    animation: home-blobs-drift 22s ease-in-out infinite alternate;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .home__hero-blobs {
     opacity: 0.65;
@@ -71,24 +87,267 @@
 }
 
 .home__title {
-  font-size: clamp(1.75rem, 4.8vw, 2.35rem);
+  font-size: clamp(1.85rem, 5vw, 2.55rem);
   margin: 0 0 var(--space-4);
-  letter-spacing: -0.04em;
-  line-height: 1.12;
-  font-weight: 700;
-  color: var(--text-h);
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--text-h) 90%, var(--accent));
 }
 
 .home__lead {
-  margin: 0 auto;
-  max-width: 32rem;
+  margin: 0 auto var(--space-5);
+  max-width: 36rem;
   line-height: 1.72;
   color: var(--text);
-  font-size: clamp(0.94rem, 2.4vw, 1.02rem);
+  font-size: clamp(0.94rem, 2.4vw, 1.05rem);
+}
+
+.home__cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3) var(--space-4);
+}
+
+.home__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.55rem 1.35rem;
+  border-radius: var(--ui-radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.home__cta--primary {
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--border));
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 94%, #000) 0%,
+    var(--accent) 100%
+  );
+  color: var(--ui-on-accent);
+  box-shadow:
+    0 2px 12px color-mix(in srgb, var(--accent) 28%, transparent),
+    0 1px 2px color-mix(in srgb, var(--text-h) 8%, transparent);
+}
+
+.home__cta--primary:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.home__cta--primary:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 3px;
+}
+
+.home__cta--secondary {
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+  background: color-mix(in srgb, var(--surface) 88%, var(--accent-bg));
+  color: var(--text-h);
+}
+
+.home__cta--secondary:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+.home__cta--secondary:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home__cta--primary:hover {
+    transform: none;
+  }
+}
+
+/* ----- 공통 섹션 타이포 ----- */
+.home__section-title {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-h);
+}
+
+.home__section-title--center {
+  text-align: center;
+}
+
+/* ----- 오늘의 팁 · 이번 탭 방문 ----- */
+.home__fun-strip {
+  margin-top: clamp(1.35rem, 4vw, 2rem);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--ui-radius-lg);
+  border: 1px dashed color-mix(in srgb, var(--accent) 24%, var(--border));
+  background: color-mix(in srgb, var(--accent-bg) 40%, var(--surface));
+}
+
+.home__daily-tip {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  .home__daily-tip {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+}
+
+.home__daily-tip-label {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.home__daily-tip-text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.home__visit-nudge {
+  margin: var(--space-3) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--divider-line);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.home__visit-nudge strong {
+  color: var(--text-h);
+  font-weight: 700;
+}
+
+/* ----- 이득 3칼럼 ----- */
+.home__benefits {
+  margin-top: clamp(1.25rem, 3vw, 1.85rem);
+  margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.home__benefit-list {
+  list-style: none;
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+@media (max-width: 900px) {
+  .home__benefit-list {
+    grid-template-columns: 1fr;
+    max-width: 26rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.home__benefit-card {
+  margin: 0;
+  padding: var(--space-5) var(--space-4);
+  border-radius: var(--ui-radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home__benefit-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 22%, var(--border));
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+}
+
+.home__benefit-icon {
+  display: block;
+  margin-bottom: var(--space-3);
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+.home__benefit-title {
+  margin: 0 0 var(--space-2);
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-h);
+}
+
+.home__benefit-text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* ----- 푸터 스트립 ----- */
+.home__foot {
+  text-align: center;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--divider-line);
+}
+
+.home__foot-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.home__foot-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.home__foot-link:hover {
+  text-decoration: underline;
+}
+
+.home__foot-link:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 @media (max-width: 640px) {
   .home__hero {
     padding: var(--space-5) var(--space-3) var(--space-5);
+  }
+
+  .home__cta {
+    width: 100%;
+    max-width: 20rem;
   }
 }

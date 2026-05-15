@@ -1,0 +1,81 @@
+.konami-toast {
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  width: min(22rem, calc(100vw - 2rem));
+  box-sizing: border-box;
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--ui-radius-lg);
+  border: 1px solid color-mix(in srgb, #7c3aed 35%, var(--border));
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, #7c3aed 12%, var(--surface)) 0%,
+    var(--surface) 55%
+  );
+  box-shadow: var(--shadow-md), 0 0 0 1px color-mix(in srgb, #7c3aed 15%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .konami-toast {
+    animation: konami-pop-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes konami-pop-in {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(12px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+  }
+}
+
+.konami-toast__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.konami-toast__title {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6d28d9;
+}
+
+.konami-toast__body {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.konami-toast__close {
+  align-self: flex-end;
+  margin-top: var(--space-1);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--ui-radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-h);
+  cursor: pointer;
+}
+
+.konami-toast__close:hover {
+  background: color-mix(in srgb, #7c3aed 10%, var(--surface-soft));
+  border-color: color-mix(in srgb, #7c3aed 28%, var(--border));
+}
+
+.konami-toast__close:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 2px;
+}

@@ -121,6 +121,58 @@
   color: var(--text-muted, var(--text));
 }
 
+.faq-page__tip {
+  margin-top: var(--space-8);
+  padding: var(--space-5);
+  border-radius: var(--ui-radius-xl);
+  border: 1px dashed color-mix(in srgb, var(--accent) 28%, var(--border));
+  background: color-mix(in srgb, var(--accent-bg) 35%, var(--surface));
+}
+
+.faq-page__tip-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.faq-page__tip-title {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-h);
+}
+
+.faq-page__tip-shuffle {
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--ui-radius-sm);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+  background: var(--surface);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-h);
+  cursor: pointer;
+}
+
+.faq-page__tip-shuffle:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+}
+
+.faq-page__tip-shuffle:focus-visible {
+  outline: 2px solid var(--ui-focus-ring);
+  outline-offset: 2px;
+}
+
+.faq-page__tip-body {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
 .faq-page__extra {
   margin-top: var(--space-10);
   padding: var(--space-5);

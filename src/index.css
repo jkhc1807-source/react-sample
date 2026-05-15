@@ -62,6 +62,20 @@
   --ui-scrim: rgba(10, 12, 18, 0.52);
   --ui-code-surface: var(--code-bg);
 
+  /* 학습 허브: 코드 ↔ 샘플 리듬 · 샘플 카드 톤 */
+  --hub-study-code-gap: 0.65rem;
+  --hub-study-code-to-label: 1rem;
+  --hub-study-title-tracking: -0.045em;
+  --hub-sample-bar: 3px;
+  --hub-sample-bg: linear-gradient(
+    106deg,
+    color-mix(in srgb, var(--accent) 9%, var(--surface)) 0%,
+    var(--surface) 28%,
+    var(--surface) 100%
+  );
+  --hub-sample-border: 1px solid color-mix(in srgb, var(--accent) 14%, var(--border));
+  --hub-sample-shadow: 0 1px 2px color-mix(in srgb, var(--text-h) 4%, transparent);
+
   --sans:
     'Pretendard Variable',
     Pretendard,

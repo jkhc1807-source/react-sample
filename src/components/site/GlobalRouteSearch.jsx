@@ -1,7 +1,8 @@
-import { useMemo, useState, useRef, useId, useEffect } from 'react'
+import { useMemo, useState, useRef, useId, useEffect, useCallback } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { HOME_SEARCH_ROUTES, getPopularHomeRoutes } from '../../data/homeSearchRoutes.js'
 import { useFavorites } from '../../hooks/useFavorites.js'
+import { isTypingOrDialogContext } from '../../lib/isTypingOrDialogContext.js'
 import './GlobalRouteSearch.css'
 
 function routeMatches(route, normalizedQuery) {
@@ -132,6 +133,32 @@ export default function GlobalRouteSearch() {
     return () => document.removeEventListener('mousedown', onDocMouseDown)
   }, [open])
 
+  const shortcutHint = useMemo(() => {
+    if (typeof navigator === 'undefined') return { modK: 'Ctrl K', slash: '/' }
+    const mac = /Mac|iPhone|iPod|iPad/i.test(navigator.userAgent)
+    return { modK: mac ? '⌘K' : 'Ctrl+K', slash: '/' }
+  }, [])
+
+  const focusSearchPalette = useCallback(() => {
+    inputRef.current?.focus()
+    setOpen(true)
+  }, [])
+
+  useEffect(() => {
+    function onDocKey(e) {
+      if (e.defaultPrevented || e.repeat) return
+      const mod = e.metaKey || e.ctrlKey
+      const isPalette = mod && (e.key === 'k' || e.key === 'K')
+      const isSlash = e.key === '/' && !mod && !e.altKey
+      if (!isPalette && !isSlash) return
+      if (isTypingOrDialogContext(e.target)) return
+      e.preventDefault()
+      focusSearchPalette()
+    }
+    document.addEventListener('keydown', onDocKey)
+    return () => document.removeEventListener('keydown', onDocKey)
+  }, [focusSearchPalette])
+
   const favCount = combinedEmptyList?.favorites.length ?? 0
   const recOffset = favCount
 
@@ -141,7 +168,8 @@ export default function GlobalRouteSearch() {
         페이지 검색
       </label>
       <p id={searchHelpId} className="visually-hidden">
-        방향키로 목록을 탐색하고 Enter로 이동합니다. Escape로 닫습니다.
+        {shortcutHint.modK} 또는 {shortcutHint.slash} 로 검색창에 포커스할 수 있습니다. 방향키로 목록을
+        탐색하고 Enter로 이동합니다. Escape로 닫습니다.
       </p>
       <div className="gnb-search__field">
         <span className="gnb-search__icon" aria-hidden="true">
@@ -155,7 +183,7 @@ export default function GlobalRouteSearch() {
           id={inputId}
           type="search"
           name="gnb-route-search"
-          className="gnb-search__input"
+          className="gnb-search__input gnb-search__input--with-hint"
           placeholder="페이지 검색…"
           value={query}
           autoComplete="off"
@@ -177,6 +205,10 @@ export default function GlobalRouteSearch() {
           onFocus={() => setOpen(true)}
           onKeyDown={onKeyDown}
         />
+        <span className="gnb-search__shortcut-hint" aria-hidden="true">
+          <kbd className="gnb-search__kbd">{shortcutHint.modK}</kbd>
+          <kbd className="gnb-search__kbd">{shortcutHint.slash}</kbd>
+        </span>
       </div>
 
       {open ? (

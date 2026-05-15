@@ -53,14 +53,6 @@
   color: var(--text);
 }
 
-.collection-study__label {
-  margin: 0;
-}
-
-.collection-study .code-sample {
-  margin-top: 0.35rem;
-}
-
 .collection-study__controls {
   display: flex;
   flex-direction: column;
